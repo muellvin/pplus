@@ -1,1 +1,16 @@
 https://en.wikipedia.org/wiki/Capacitive_sensing
+https://www.motioncontroltips.com/what-are-capacitive-proximity-sensors/
+
+general idea:
+RC circuit, where the the capacitor is created as such,
+that the electric field lines extend into open space.
+The presence of a conductive object or apparently material with
+a high dielectric constant changes the capacitance of the setup.
+
+the change in capacitance can be monitored through change in the current-
+voltage ratio:
+C = I / (dV/dt)
+
+when an AC source is used with for example a step function,
+one should be able to determine the capacitance through time integration
+C = integration(I) / (V-V0) 
