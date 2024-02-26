@@ -9,6 +9,18 @@ Created on Sun Feb 25 14:35:05 2024
 import numpy as np
 import matplotlib.pyplot as plt
 
+"""global constants"""
+#charge and charge density
+#no radius because cancels with r' from r'dphi' 
+q = 1
+qdens1 = q/(2*np.pi)
+qdens2 = -q/(2*np.pi)
+
+#constants
+epsilon = 8.854e-12 #farads per meter
+constant1 = qdens1/(4*np.pi*epsilon)
+constant2 = qdens2/(4*np.pi*epsilon)
+
 
 
 
@@ -33,7 +45,12 @@ def gauss_quadrature(f, R, r, z, a, b):
 
 #Integration of f(R,r,z,x) with respect to x on [a,b]
 #using N subintervals and performing gauss_quadrature on it
-def integrate(f, R, r, z, a, b, N):
+def integrate(f, R, r, z):
+    # Define integration limits
+    a = 0
+    b = 2*np.pi
+    #number of subintervals
+    N = 1000
     integral = 0
     x = np.linspace(a,b, N+1)
     for i in range(N):
@@ -61,72 +78,93 @@ def integrandEz(R, r, z, x):
     return numerator/denominator
 
 
-def Efield(R,r,z, a, b, N):
-    Er = integrate(integrandEr, R, r, z, a, b, N)
-    Ez = integrate(integrandEz, R, r, z, a, b, N)
+def Efield(R,r,z, d = 0):
+    Er = integrate(integrandEr, R, r, z)
+    Ez = integrate(integrandEz, R, r, z)
+    if d!=0:
+        Er -= integrate(integrandEr, R, r, z-2*d)
+        Ez -= integrate(integrandEz, R, r, z-2*d)
+
     return np.array([Er, Ez])
 
 
-
-# Define integration limits
-a = 0
-b = 2*np.pi
-#number of subintervals
-N = 1000
-#radii of the two rings with R1<R2
-R1 = 7e-3#m
-R2 = 20.1e-3#m
-#charge and charge density
-q = 1
-qdens1 = q/(2*np.pi)
-qdens2 = -q/(2*np.pi)
-
-#constants
-epsilon = 8.854e-12 #farads per meter
-constant1 = qdens1/(4*np.pi*epsilon)
-constant2 = qdens2/(4*np.pi*epsilon)
-
-#z = 10
-#r = 40
-#print(integrate(integrandEy, R, r, z, a, b, N))
-
-# Define the grid
-r = np.linspace(0, 0.04, 20)
-z = np.linspace(-0.04, 0.04, 20)
-rr, zz = np.meshgrid(r, z)
-
 # Define the vector field
-def vectorfield(rr,zz, a,b,N):
-    E1 = constant1* Efield(R1, rr,zz, a,b,N)
-    E2 = constant2* Efield(R2, rr,zz, a,b,N)
+def vectorfield(R1, R2, rr, zz, d=0):
+    E1 = constant1* Efield(R1, rr, zz, d)
+    E2 = constant2* Efield(R2, rr, zz, d)
     return E1+E2
 
-# Compute the vector field values
-U, V = vectorfield(rr, zz, a,b,N)
 
-# Plot the vector field
-plt.figure(figsize=(6, 6))
-plt.quiver(rr, zz, U, V, color='b', angles='xy', scale_units='xy', scale=50000000000000000)
-plt.xlabel('R')
-plt.ylabel('Z')
-plt.title('Electric field in the (r-z)-plane')
-plt.grid()
-plt.show()
+def plotfield(R1, R2, d):
+    #plotting window
+    r_min = 0
+    r_max = 0.04
+    z_min = -d
+    z_max = 3*d
+
+    if d==0:
+        z_min = -0.04
+        z_max = 0.04
+
+    ndots = 5*4#multiples of 4!!!
+    h = (z_max-z_min)/ndots
+
+    # Define the grid
+    r = np.linspace(r_min, r_max, ndots)
+    z = np.array([i * h for i in range(int(-ndots/4), int(3/4*ndots+2))])-h/2
+    rr, zz = np.meshgrid(r, z)
+    
+    # Compute the vector field values
+    U, V = vectorfield(R1, R2, rr, zz, d)
+    
+    # Plot the vector field
+    plt.figure(figsize=(6, 6))
+    plt.quiver(rr, zz, U, V, color='b', angles='xy', scale_units='xy', scale=1e17)
+    if d!= 0:
+        plt.hlines(d, 0, 0.04, color='red')
+    plt.xlabel('R')
+    plt.ylabel('Z')
+    plt.title('Electric field in the (r-z)-plane')
+    plt.grid()
+    plt.show()
 
 
 #compute voltage difference
-N1 = N
-N2 = N
-def voltage(R1, R2, a, b, N1, N2):
-    
-    x = np.linspace(R1, R2, N2+1)
-    dx = (R2-R1)/N2
-    E1 = constant1*Efield(R1,x,0, a, b, N1)
-    E2 = constant2*Efield(R2,x,0, a, b, N1)
+def capacitance(R1, R2, d=0):
+    N = 1000
+    x = np.linspace(R1, R2, N+1)
+    dx = (R2-R1)/N
+    E1 = constant1*Efield(R1,x,0, d)
+    E2 = constant2*Efield(R2,x,0, d)
     Er = E1[0] + E2[0]
     integral = np.sum(Er*dx)
-    return integral
+    return q/integral
 
-volts = voltage(R1, R2, a, b, N1, N2)
-print('capacitance: ',q/volts,'farads')
+
+#radii of the two rings with R1<R2
+R1 = 10e-3#m
+s = 1e-3#m
+R2 = R1+s#m
+
+#distance of the conducting plane
+#choose d=0 for no conductor
+d= 13e-3#m
+
+plotfield(R1, R2, d)
+print('capacitance: ', capacitance(R1, R2, d),'farads')
+
+
+d = np.arange(1e-3,40e-3, 1e-3)
+c = np.zeros_like(d, dtype=float)
+for i, di in enumerate(d):
+    c[i] = capacitance(R1, R2, di)
+
+plt.figure()
+plt.plot(d*1e3,c*1e12)
+plt.title(f'R = {R1 * 1e3} mm, s = {s * 1e3} mm')
+plt.xlabel('distance conductor [mm]')
+plt.ylabel('Capacitance [pF]')
+plt.savefig('fig.pdf')  # Save the figure as a png
+plt.show()
+plt.close()
 
