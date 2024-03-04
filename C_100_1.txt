@@ -1,0 +1,17 @@
+# Nun mit Plättchen
+# Messung bei 100kO Serie Zeitfenster 300 us für grossen Ring
+
+# Abstand [mm], Mittelwert [kHz], std [Hz], n
+50.0, 444.8, 431.2, 105
+10.0, 423.4, 0, 104
+5.0, 422.3, 120.4, 97
+3.0, 417.7, 394.8, 104
+2.0, 414.0, 0, 102
+1.0, 400.9, 430.5, 103
+0.5, 386.1, 267.6, 105
+
+
+# Troubleshooting
+# Cables from jumpers have an induced capacity or inductance. We had to clamp one cable down and also introduce a distance between plate and jumpers with a plastic ruler.
+#458.8, 419.9, 452.7, 463.7, 435.5, 436.5, 434.2 (final value)
+#Other Troubleshooting: Kabelsalat. 

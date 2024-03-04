@@ -1,0 +1,11 @@
+# Ohne Sensor, 100 kO
+517.8, 97.99, 103
+
+# Ohne Sensor, 100 pF, 100 kO
+61.35, 55.97, 119
+
+# Ohne Sensor, 100pF, 6.8kO
+833.5, 0, 90
+
+# Ohne Sensor, 0pF, 6.8kO, Square wave destroyed (stil visible), bad sampling rate
+4500, 4349, 104
