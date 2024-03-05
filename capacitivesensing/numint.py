@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 #no radius because cancels with r' from r'dphi' 
 q = 1
 qdens1 = q/(2*np.pi)
-qdens2 = -q/(2*np.pi)
+qdens2 = 0#-q/(2*np.pi)
 
 #constants
 epsilon = 8.854e-12 #farads per meter
@@ -137,13 +137,13 @@ def capacitance(R1, R2, d=0):
     E1 = constant1*Efield(R1,x,0, d)
     E2 = constant2*Efield(R2,x,0, d)
     Er = E1[0] + E2[0]
-    integral = np.sum(Er*dx)
-    return q/integral
+    voltage = np.sum(Er*dx)
+    return q/voltage
 
 
 #radii of the two rings with R1<R2
 R1 = 10e-3#m
-s = 1e-3#m
+s = 10e-3#m
 R2 = R1+s#m
 
 #distance of the conducting plane
