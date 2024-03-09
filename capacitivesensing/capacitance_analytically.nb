@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      2984,         97]
-NotebookOptionsPosition[      2424,         79]
-NotebookOutlinePosition[      2812,         95]
-CellTagsIndexPosition[      2769,         92]
+NotebookDataLength[     76671,       2203]
+NotebookOptionsPosition[     68566,       2102]
+NotebookOutlinePosition[     69005,       2119]
+CellTagsIndexPosition[     68962,       2116]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -22,8 +22,25 @@ Notebook[{
 Cell[CellGroupData[{
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
-  "\n", 
+  RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\n", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Script", " ", "to", " ", "compute", " ", "voltages", " ", "created", " ",
+      "in", " ", "the", " ", "plane", " ", "of", " ", "a", " ", "charged", 
+     " ", "ring", "\[IndentingNewLine]", "Position", " ", "of", " ", 
+     RowBox[{"interest", ":", " ", "x_vec"}]}], " ", "=", " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"r", ",", " ", "0", ",", " ", "0"}], ")"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{"Ring", ":", "\[IndentingNewLine]", "\t", 
+      RowBox[{
+      "radius", " ", "R", "\[IndentingNewLine]", "k", " ", "is", " ", "the", 
+       " ", "factor", " ", "in", " ", "the", " ", "square", " ", 
+       "root"}]}]}]}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", 
    RowBox[{"Define", " ", "the", " ", "function"}], 
    "*)"}]}], "\[IndentingNewLine]", 
@@ -34,51 +51,2058 @@ Cell[BoxData[{
    RowBox[{"1", "/", 
     RowBox[{"Sqrt", "[", 
      RowBox[{"k", "-", 
-      RowBox[{"Cos", "[", "x", "]"}]}], "]"}]}]}], "\[IndentingNewLine]", 
-  "\n", 
+      RowBox[{"Cos", "[", "x", "]"}]}], "]"}]}]}], "\n", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", 
-   RowBox[{"Set", " ", "the", " ", "value", " ", "of", " ", "k"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"k", "=", "2"}], ";"}], "\[IndentingNewLine]", "\n", 
-  RowBox[{"(*", 
-   RowBox[{"Integrate", " ", "the", " ", "function"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Integrate", " ", "the", " ", "function"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"integral", "=", 
-   RowBox[{"Integrate", "[", 
-    RowBox[{
-     RowBox[{"f", "[", 
-      RowBox[{"x", ",", "k"}], "]"}], ",", "x"}], "]"}]}], 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"TracePrint", "[", 
+    RowBox[{"Integrate", "[", 
+     RowBox[{
+      RowBox[{"f", "[", 
+       RowBox[{"x", ",", "k"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", " ", "0", ",", " ", 
+        RowBox[{"2", "*", "Pi"}]}], "}"}], ",", 
+      RowBox[{"Assumptions", "->", 
+       RowBox[{"Element", "[", 
+        RowBox[{"k", ",", "Reals"}], "]"}]}]}], "]"}], "]"}]}], 
+  "\[IndentingNewLine]", "\n", 
   RowBox[{"(*", 
    RowBox[{"Display", " ", "the", " ", "result"}], 
-   "*)"}]}], "\n", "integral", "\[IndentingNewLine]"}], "Input",
- CellChangeTimes->{{3.9189253999718723`*^9, 3.918925409320012*^9}},
- CellLabel->"In[5]:=",ExpressionUUID->"f10d78ef-53a1-43b4-bbd7-9f0e6613bc62"],
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{"integral", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Define", " ", "a", " ", "new", " ", "function", " ", "using", " ", "the", 
+    " ", "result"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"potentialofring", "[", "k_", "]"}], ":=", 
+  RowBox[{
+  "Evaluate", "[", "integral", "]"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.9189253999718723`*^9, 3.918925409320012*^9}, {
+   3.9189259163803053`*^9, 3.9189259171808367`*^9}, {3.9189676833938303`*^9, 
+   3.918967993380082*^9}, {3.9189680262709084`*^9, 3.9189680814147387`*^9}, 
+   3.918968112318556*^9, 3.9189681745747423`*^9, {3.918968238275157*^9, 
+   3.9189682597960787`*^9}, 3.918968318293234*^9, {3.9189683567263517`*^9, 
+   3.918968423346665*^9}, {3.9189694831847887`*^9, 3.9189694890617733`*^9}},
+ CellLabel->"In[38]:=",ExpressionUUID->"f10d78ef-53a1-43b4-bbd7-9f0e6613bc62"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"2", " ", 
-  RowBox[{"EllipticF", "[", 
-   RowBox[{
-    FractionBox["x", "2"], ",", 
-    RowBox[{"-", "2"}]}], "]"}]}]], "Output",
- CellChangeTimes->{3.918925428270268*^9},
- CellLabel->"Out[8]=",ExpressionUUID->"111f8c7f-8de2-429b-9da6-35c755144a83"],
+ InterpretationBox[
+  RowBox[{" ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"Integrate", "[", 
+     RowBox[{
+      RowBox[{"f", "[", 
+       RowBox[{"x", ",", "k"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "0", ",", 
+        RowBox[{"2", " ", "\[Pi]"}]}], "}"}], ",", 
+      RowBox[{"Assumptions", "\[Rule]", 
+       RowBox[{"k", "\[Element]", 
+        TemplateBox[{},
+         "Reals"]}]}]}], "]"}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[1], 
+   HoldForm[
+    Integrate[
+     $CellContext`f[$CellContext`x, $CellContext`k], {$CellContext`x, 0, 2 
+      Pi}, Assumptions -> Element[$CellContext`k, Reals]]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499369081*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"ad23c910-e0ae-4861-be01-38b9f0e07ae4"],
 
 Cell[BoxData[
- RowBox[{"2", " ", 
-  RowBox[{"EllipticF", "[", 
+ InterpretationBox[
+  RowBox[{"  ", "\[InvisibleSpace]", 
+   TagBox["Integrate",
+    HoldForm]}],
+  SequenceForm[
+   Indent[2], 
+   HoldForm[Integrate]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499395361*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"faef1df4-3865-42d4-96dc-57a2751da70c"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"  ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"f", "[", 
+     RowBox[{"x", ",", "k"}], "]"}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[2], 
+   HoldForm[
+    $CellContext`f[$CellContext`x, $CellContext`k]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499397538*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"e1a71ed6-920d-469a-8117-c46b3ae4cc94"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"   ", "\[InvisibleSpace]", 
+   TagBox["f",
+    HoldForm]}],
+  SequenceForm[
+   Indent[3], 
+   HoldForm[$CellContext`f]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499399292*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"7586ec15-1def-4593-be8f-48f837ece119"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"   ", "\[InvisibleSpace]", 
+   TagBox["x",
+    HoldForm]}],
+  SequenceForm[
+   Indent[3], 
+   HoldForm[$CellContext`x]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499400969*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"d4bd496f-b2cb-4880-8f39-edbb973da6c3"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"   ", "\[InvisibleSpace]", 
+   TagBox["k",
+    HoldForm]}],
+  SequenceForm[
+   Indent[3], 
+   HoldForm[$CellContext`k]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499403174*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"be27f5dd-decb-4d3c-9557-19ad5319eadb"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"  ", "\[InvisibleSpace]", 
+   TagBox[
+    FractionBox["1", 
+     SqrtBox[
+      RowBox[{"k", "-", 
+       RowBox[{"Cos", "[", "x", "]"}]}]]],
+    HoldForm]}],
+  SequenceForm[
+   Indent[2], 
+   HoldForm[1/Sqrt[$CellContext`k - Cos[$CellContext`x]]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189694994054203`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"096de775-de10-4413-86f4-9eaa0a777f89"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"   ", "\[InvisibleSpace]", 
+   TagBox["Times",
+    HoldForm]}],
+  SequenceForm[
+   Indent[3], 
+   HoldForm[Times]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499427713*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"9f3ed122-5e21-4dc0-bb0e-178eae03c2cb"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"   ", "\[InvisibleSpace]", 
+   TagBox["1",
+    HoldForm]}],
+  SequenceForm[
+   Indent[3], 
+   HoldForm[1]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499429674*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"d6e383ef-1d7f-40be-8366-545360ae1d31"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"   ", "\[InvisibleSpace]", 
+   TagBox[
+    FractionBox["1", 
+     SqrtBox[
+      RowBox[{"k", "-", 
+       RowBox[{"Cos", "[", "x", "]"}]}]]],
+    HoldForm]}],
+  SequenceForm[
+   Indent[3], 
+   HoldForm[Sqrt[$CellContext`k - Cos[$CellContext`x]]^(-1)]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189694994314957`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"d25c486d-b529-4f1f-9a1c-e328fe3fbaa6"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"    ", "\[InvisibleSpace]", 
+   TagBox["Power",
+    HoldForm]}],
+  SequenceForm[
+   Indent[4], 
+   HoldForm[Power]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.91896949943357*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"0a45ef05-5c58-4333-a846-158160e9b4c8"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"    ", "\[InvisibleSpace]", 
+   TagBox[
+    SqrtBox[
+     RowBox[{"k", "-", 
+      RowBox[{"Cos", "[", "x", "]"}]}]],
+    HoldForm]}],
+  SequenceForm[
+   Indent[4], 
+   HoldForm[
+    Sqrt[$CellContext`k - Cos[$CellContext`x]]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189694994359922`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"d8e74647-4f23-4d60-9354-f6e60d621f47"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"     ", "\[InvisibleSpace]", 
+   TagBox["Sqrt",
+    HoldForm]}],
+  SequenceForm[
+   Indent[5], 
+   HoldForm[Sqrt]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499438387*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"c793f4e2-baa7-428b-8f98-acc3c5774084"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"     ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"k", "-", 
+     RowBox[{"Cos", "[", "x", "]"}]}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[5], 
+   HoldForm[$CellContext`k - Cos[$CellContext`x]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499440873*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"78a4db0b-4528-4405-94da-c099d42db8fc"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"      ", "\[InvisibleSpace]", 
+   TagBox["Plus",
+    HoldForm]}],
+  SequenceForm[
+   Indent[6], 
+   HoldForm[Plus]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499442956*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"baeb92c8-4d76-4bb6-80e6-71b999d3e488"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"      ", "\[InvisibleSpace]", 
+   TagBox["k",
+    HoldForm]}],
+  SequenceForm[
+   Indent[6], 
+   HoldForm[$CellContext`k]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189694994447193`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"181f01fc-034d-43ee-9979-d40a8dbdab58"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"      ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"-", 
+     RowBox[{"Cos", "[", "x", "]"}]}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[6], 
+   HoldForm[-Cos[$CellContext`x]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499446224*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"ead586fe-fd31-4fa5-9646-27fd599006c5"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"       ", "\[InvisibleSpace]", 
+   TagBox["Times",
+    HoldForm]}],
+  SequenceForm[
+   Indent[7], 
+   HoldForm[Times]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189694994476547`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"c5f70165-8b82-486d-b9d8-5fb521ee7c36"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"       ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"-", "1"}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[7], 
+   HoldForm[-1]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499449031*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"9bca4e54-9f74-46e2-9f35-f64ce52dcf69"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"       ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"Cos", "[", "x", "]"}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[7], 
+   HoldForm[
+    Cos[$CellContext`x]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189694994504642`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"86b52542-4980-4edc-b88f-e908d7d54f30"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"        ", "\[InvisibleSpace]", 
+   TagBox["Cos",
+    HoldForm]}],
+  SequenceForm[
+   Indent[8], 
+   HoldForm[Cos]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189694994520473`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"53023fa1-5696-412e-9dc7-cd4dde56acbe"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"        ", "\[InvisibleSpace]", 
+   TagBox["x",
+    HoldForm]}],
+  SequenceForm[
+   Indent[8], 
+   HoldForm[$CellContext`x]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189694994535418`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"68f8b4d3-fb7c-4197-bd5b-981775f50ef3"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"    ", "\[InvisibleSpace]", 
+   TagBox[
+    SqrtBox[
+     RowBox[{"k", "-", 
+      RowBox[{"Cos", "[", "x", "]"}]}]],
+    HoldForm]}],
+  SequenceForm[
+   Indent[4], 
+   HoldForm[($CellContext`k - Cos[$CellContext`x])^Rational[1, 2]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189694994552517`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"a2558b2a-a53a-4da5-bc71-2e78ae4637b6"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"     ", "\[InvisibleSpace]", 
+   TagBox["Power",
+    HoldForm]}],
+  SequenceForm[
+   Indent[5], 
+   HoldForm[Power]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189694994569893`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"fb2eb91e-21f6-4d0c-a46b-24020c75f505"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"     ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"k", "-", 
+     RowBox[{"Cos", "[", "x", "]"}]}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[5], 
+   HoldForm[$CellContext`k - Cos[$CellContext`x]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499458767*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"8b0dd21b-932d-45e4-8a58-292ad9b300d9"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"     ", "\[InvisibleSpace]", 
+   TagBox[
+    FractionBox["1", "2"],
+    HoldForm]}],
+  SequenceForm[
+   Indent[5], 
+   HoldForm[
+    Rational[1, 2]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499460465*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"6a5101e8-3a5b-4c9c-b640-97b99ce33ec3"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"     ", "\[InvisibleSpace]", 
+   TagBox[
+    FractionBox["1", "2"],
+    HoldForm]}],
+  SequenceForm[
+   Indent[5], 
+   HoldForm[
+    Rational[1, 2]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189694994622107`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"0feec2fd-4881-46f0-83c9-1257dc68903a"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"    ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"-", "1"}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[4], 
+   HoldForm[-1]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499464657*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"67a82e1a-04df-4fd6-941d-9e9e9091b4be"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"   ", "\[InvisibleSpace]", 
+   TagBox[
+    FractionBox["1", 
+     SqrtBox[
+      RowBox[{"k", "-", 
+       RowBox[{"Cos", "[", "x", "]"}]}]]],
+    HoldForm]}],
+  SequenceForm[
+   Indent[3], 
+   HoldForm[(($CellContext`k - Cos[$CellContext`x])^Rational[1, 2])^(-1)]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499467022*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"962bec48-ad2e-4e30-a5f2-a5aab5c52552"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"   ", "\[InvisibleSpace]", 
+   TagBox[
+    FractionBox["1", 
+     SqrtBox[
+      RowBox[{"k", "-", 
+       RowBox[{"Cos", "[", "x", "]"}]}]]],
+    HoldForm]}],
+  SequenceForm[
+   Indent[3], 
+   HoldForm[($CellContext`k - Cos[$CellContext`x])^Rational[-1, 2]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499469446*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"1bc30255-bb05-4948-b4f7-cea51767d304"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"    ", "\[InvisibleSpace]", 
+   TagBox["Power",
+    HoldForm]}],
+  SequenceForm[
+   Indent[4], 
+   HoldForm[Power]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.91896949947176*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"7ca05b64-96a5-4132-99e8-6de4a63ecadf"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"    ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"k", "-", 
+     RowBox[{"Cos", "[", "x", "]"}]}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[4], 
+   HoldForm[$CellContext`k - Cos[$CellContext`x]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499473909*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"bbe8e723-1eba-4a10-a70d-f9d4f6c7024c"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"    ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"-", 
+     FractionBox["1", "2"]}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[4], 
+   HoldForm[
+    Rational[-1, 2]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499475377*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"01a539ab-7c17-4da0-a3d0-294ffb2a6a7b"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"    ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"-", 
+     FractionBox["1", "2"]}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[4], 
+   HoldForm[
+    Rational[-1, 2]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189694994770393`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"8b2719a5-ffe4-4ce3-8e56-f393f9f1dbe8"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"  ", "\[InvisibleSpace]", 
+   TagBox[
+    FractionBox["1", 
+     SqrtBox[
+      RowBox[{"k", "-", 
+       RowBox[{"Cos", "[", "x", "]"}]}]]],
+    HoldForm]}],
+  SequenceForm[
+   Indent[2], 
+   HoldForm[1 ($CellContext`k - Cos[$CellContext`x])^Rational[-1, 2]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189694994794283`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"66dad2b8-8d68-4f96-b390-cc4e6b11ba6d"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"  ", "\[InvisibleSpace]", 
+   TagBox[
+    FractionBox["1", 
+     SqrtBox[
+      RowBox[{"k", "-", 
+       RowBox[{"Cos", "[", "x", "]"}]}]]],
+    HoldForm]}],
+  SequenceForm[
+   Indent[2], 
+   HoldForm[($CellContext`k - Cos[$CellContext`x])^Rational[-1, 2]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.91896949948172*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"b0274419-5dcc-4a0a-93a4-df89ce3dc789"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"  ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"{", 
+     RowBox[{"x", ",", "0", ",", 
+      RowBox[{"2", " ", "\[Pi]"}]}], "}"}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[2], 
+   HoldForm[{$CellContext`x, 0, 2 Pi}]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499483748*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"a3595041-61b3-47c9-89d0-de3eecf61f84"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"   ", "\[InvisibleSpace]", 
+   TagBox["List",
+    HoldForm]}],
+  SequenceForm[
+   Indent[3], 
+   HoldForm[List]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189694994859943`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"a0a04793-2b60-4894-85cd-da60fe21a75b"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"   ", "\[InvisibleSpace]", 
+   TagBox["x",
+    HoldForm]}],
+  SequenceForm[
+   Indent[3], 
+   HoldForm[$CellContext`x]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189694994878883`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"db3d9a33-a0eb-4b4a-8116-9a1bab8f50b6"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"   ", "\[InvisibleSpace]", 
+   TagBox["0",
+    HoldForm]}],
+  SequenceForm[
+   Indent[3], 
+   HoldForm[0]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499490017*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"7e0bab72-f9f6-474f-95f2-2974779dc0bc"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"   ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"2", " ", "\[Pi]"}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[3], 
+   HoldForm[2 Pi]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499492133*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"1df63fb7-fd39-4a46-830c-b547a7a5103e"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"    ", "\[InvisibleSpace]", 
+   TagBox["Times",
+    HoldForm]}],
+  SequenceForm[
+   Indent[4], 
+   HoldForm[Times]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499494175*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"94aa20ec-ddc5-42a2-a894-3f623a9bcdba"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"    ", "\[InvisibleSpace]", 
+   TagBox["2",
+    HoldForm]}],
+  SequenceForm[
+   Indent[4], 
+   HoldForm[2]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499496044*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"12c31cd8-b55e-4269-8c20-fc743070ad98"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"    ", "\[InvisibleSpace]", 
+   TagBox["\[Pi]",
+    HoldForm]}],
+  SequenceForm[
+   Indent[4], 
+   HoldForm[Pi]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.91896949949792*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"baef13a0-3f60-48a1-8e6d-6d5a2827ea44"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"  ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"Assumptions", "\[Rule]", 
+     RowBox[{"k", "\[Element]", 
+      TemplateBox[{},
+       "Reals"]}]}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[2], 
+   HoldForm[Assumptions -> Element[$CellContext`k, Reals]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189694994992247`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"2d7b6471-f3db-4b21-ad20-76aba066df58"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"   ", "\[InvisibleSpace]", 
+   TagBox["Rule",
+    HoldForm]}],
+  SequenceForm[
+   Indent[3], 
+   HoldForm[Rule]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499500636*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"525765c2-f5df-4fe0-93de-f8ba2609a051"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"   ", "\[InvisibleSpace]", 
+   TagBox["Assumptions",
+    HoldForm]}],
+  SequenceForm[
+   Indent[3], 
+   HoldForm[Assumptions]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499502015*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"713adeab-a273-4458-998f-393ce492b98f"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"   ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"k", "\[Element]", 
+     TemplateBox[{},
+      "Reals"]}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[3], 
+   HoldForm[
+    Element[$CellContext`k, Reals]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499503831*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"82245072-c2fc-43ca-bd19-9bab00e5a990"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"    ", "\[InvisibleSpace]", 
+   TagBox["Element",
+    HoldForm]}],
+  SequenceForm[
+   Indent[4], 
+   HoldForm[Element]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189694995060472`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"8fae5d7d-342b-4298-a1ff-9aa80ae52c58"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"    ", "\[InvisibleSpace]", 
+   TagBox["k",
+    HoldForm]}],
+  SequenceForm[
+   Indent[4], 
+   HoldForm[$CellContext`k]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499508119*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"bba08d85-30d3-4cb0-bd15-186632b33044"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"    ", "\[InvisibleSpace]", 
+   TagBox[
+    TemplateBox[{},
+     "Reals"],
+    HoldForm]}],
+  SequenceForm[
+   Indent[4], 
+   HoldForm[Reals]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189694995100107`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"9af445fa-ecbb-4d6f-91b4-bf9854c59716"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"  ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"Assumptions", "\[Rule]", 
+     RowBox[{"k", "\[Element]", 
+      TemplateBox[{},
+       "Reals"]}]}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[2], 
+   HoldForm[Assumptions -> Element[$CellContext`k, Reals]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499511622*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"131cab28-e7d2-4bca-9319-e30121be5dd9"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"   ", "\[InvisibleSpace]", 
+   TagBox["Rule",
+    HoldForm]}],
+  SequenceForm[
+   Indent[3], 
+   HoldForm[Rule]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499513812*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"7303b826-60f8-4a6d-a191-3d4049bf383e"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"   ", "\[InvisibleSpace]", 
+   TagBox["Assumptions",
+    HoldForm]}],
+  SequenceForm[
+   Indent[3], 
+   HoldForm[Assumptions]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499515292*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"2f8f63fb-732b-4ee5-8cf3-028214e8146f"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"   ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"k", "\[Element]", 
+     TemplateBox[{},
+      "Reals"]}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[3], 
+   HoldForm[
+    Element[$CellContext`k, Reals]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499517324*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"5e917997-eca7-49c5-a123-f034f907f480"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{" ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"Integrate", "[", 
+     RowBox[{
+      FractionBox["1", 
+       SqrtBox[
+        RowBox[{"k", "-", 
+         RowBox[{"Cos", "[", "x", "]"}]}]]], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "0", ",", 
+        RowBox[{"2", " ", "\[Pi]"}]}], "}"}], ",", 
+      RowBox[{"Assumptions", "\[Rule]", 
+       RowBox[{"k", "\[Element]", 
+        TemplateBox[{},
+         "Reals"]}]}]}], "]"}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[1], 
+   HoldForm[
+    Integrate[($CellContext`k - Cos[$CellContext`x])^
+     Rational[-1, 2], {$CellContext`x, 0, 2 Pi}, Assumptions -> 
+     Element[$CellContext`k, Reals]]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499519247*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"0e9c39c5-54ab-4999-8a6b-3cd07a61f61c"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"  ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"OptionQ", "[", 
+     RowBox[{"Assumptions", "\[Rule]", 
+      RowBox[{"k", "\[Element]", 
+       TemplateBox[{},
+        "Reals"]}]}], "]"}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[2], 
+   HoldForm[
+    OptionQ[Assumptions -> Element[$CellContext`k, Reals]]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189694995208483`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"571e5a72-cd8b-4c37-948b-6e08c5de842f"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"   ", "\[InvisibleSpace]", 
+   TagBox["OptionQ",
+    HoldForm]}],
+  SequenceForm[
+   Indent[3], 
+   HoldForm[OptionQ]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189694995228024`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"1217ada8-3ba7-4e04-8ebf-5d68a34a6b8f"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"   ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"Assumptions", "\[Rule]", 
+     RowBox[{"k", "\[Element]", 
+      TemplateBox[{},
+       "Reals"]}]}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[3], 
+   HoldForm[Assumptions -> Element[$CellContext`k, Reals]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499524235*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"60d3753a-3065-407e-a661-f40157c072e5"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"  ", "\[InvisibleSpace]", 
+   TagBox["True",
+    HoldForm]}],
+  SequenceForm[
+   Indent[2], 
+   HoldForm[True]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189694995257196`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"bfd5fcab-207f-4213-b6ea-df0c5f947a4c"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"  ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"!", 
+     RowBox[{"FreeQ", "[", 
+      RowBox[{
+       FractionBox["1", 
+        SqrtBox[
+         RowBox[{"k", "-", 
+          RowBox[{"Cos", "[", "x", "]"}]}]]], ",", 
+       RowBox[{"HoldPattern", "[", 
+        RowBox[{"Root", "[", 
+         RowBox[{"Integrate`ImproperDump`aa$__", "/;", 
+          RowBox[{"Internal`DependsOnQ", "[", 
+           RowBox[{
+            RowBox[{"{", "Integrate`ImproperDump`aa$", "}"}], ",", "x"}], 
+           "]"}]}], "]"}], "]"}]}], "]"}]}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[2], 
+   HoldForm[
+    Not[
+     FreeQ[($CellContext`k - Cos[$CellContext`x])^Rational[-1, 2], 
+      HoldPattern[
+       Root[
+        Condition[
+         Pattern[Integrate`ImproperDump`aa$, 
+          BlankSequence[]], 
+         Internal`DependsOnQ[{
+          Integrate`ImproperDump`aa$}, $CellContext`x]]]]]]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499527789*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"96d6300f-8a9f-4bd6-979c-c09048eb6969"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"   ", "\[InvisibleSpace]", 
+   TagBox["Not",
+    HoldForm]}],
+  SequenceForm[
+   Indent[3], 
+   HoldForm[Not]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499530097*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"f12051a4-37df-45b4-9e41-77bb233eeee6"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"   ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"FreeQ", "[", 
+     RowBox[{
+      FractionBox["1", 
+       SqrtBox[
+        RowBox[{"k", "-", 
+         RowBox[{"Cos", "[", "x", "]"}]}]]], ",", 
+      RowBox[{"HoldPattern", "[", 
+       RowBox[{"Root", "[", 
+        RowBox[{"Integrate`ImproperDump`aa$__", "/;", 
+         RowBox[{"Internal`DependsOnQ", "[", 
+          RowBox[{
+           RowBox[{"{", "Integrate`ImproperDump`aa$", "}"}], ",", "x"}], 
+          "]"}]}], "]"}], "]"}]}], "]"}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[3], 
+   HoldForm[
+    FreeQ[($CellContext`k - Cos[$CellContext`x])^Rational[-1, 2], 
+     HoldPattern[
+      Root[
+       Condition[
+        Pattern[Integrate`ImproperDump`aa$, 
+         BlankSequence[]], 
+        Internal`DependsOnQ[{
+         Integrate`ImproperDump`aa$}, $CellContext`x]]]]]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189694995316763`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"53e99e98-6f74-4855-a4a0-220aee0dfe80"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"    ", "\[InvisibleSpace]", 
+   TagBox["FreeQ",
+    HoldForm]}],
+  SequenceForm[
+   Indent[4], 
+   HoldForm[FreeQ]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499533267*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"150e17c1-bf69-471c-ac9f-829e9c01e4b7"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"    ", "\[InvisibleSpace]", 
+   TagBox[
+    FractionBox["1", 
+     SqrtBox[
+      RowBox[{"k", "-", 
+       RowBox[{"Cos", "[", "x", "]"}]}]]],
+    HoldForm]}],
+  SequenceForm[
+   Indent[4], 
+   HoldForm[($CellContext`k - Cos[$CellContext`x])^Rational[-1, 2]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499535227*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"b4c82272-0fe6-4cfc-8967-374be49a5995"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"    ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"HoldPattern", "[", 
+     RowBox[{"Root", "[", 
+      RowBox[{"Integrate`ImproperDump`aa$__", "/;", 
+       RowBox[{"Internal`DependsOnQ", "[", 
+        RowBox[{
+         RowBox[{"{", "Integrate`ImproperDump`aa$", "}"}], ",", "x"}], 
+        "]"}]}], "]"}], "]"}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[4], 
+   HoldForm[
+    HoldPattern[
+     Root[
+      Condition[
+       Pattern[Integrate`ImproperDump`aa$, 
+        BlankSequence[]], 
+       Internal`DependsOnQ[{Integrate`ImproperDump`aa$}, $CellContext`x]]]]]],
+  
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499537423*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"b5488b07-b36a-46e9-a930-fd8eb424a952"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"     ", "\[InvisibleSpace]", 
+   TagBox["HoldPattern",
+    HoldForm]}],
+  SequenceForm[
+   Indent[5], 
+   HoldForm[HoldPattern]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499539414*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"16c84856-4acf-414a-9035-bd56bee7dd78"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"   ", "\[InvisibleSpace]", 
+   TagBox["True",
+    HoldForm]}],
+  SequenceForm[
+   Indent[3], 
+   HoldForm[True]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189694995408497`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"498b4b21-2bfe-4d46-ab50-a1aa0f774a1b"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"  ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"!", "True"}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[2], 
+   HoldForm[
+    Not[True]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499542547*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"8e2f6de9-6efe-4e58-84c6-bd38bbd3886d"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"  ", "\[InvisibleSpace]", 
+   TagBox["False",
+    HoldForm]}],
+  SequenceForm[
+   Indent[2], 
+   HoldForm[False]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969499544129*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"2ecf78f2-9cdc-4636-a2c1-4306bfa3932e"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{" ", "\[InvisibleSpace]", 
+   TagBox[
+    TemplateBox[{
+      RowBox[{
+        FractionBox[
+         RowBox[{"2", " ", 
+           RowBox[{"EllipticK", "[", 
+             RowBox[{"-", 
+               FractionBox["2", 
+                RowBox[{
+                  RowBox[{"-", "1"}], "+", "k"}]]}], "]"}]}], 
+         SqrtBox[
+          RowBox[{
+            RowBox[{"-", "1"}], "+", "k"}]]], "+", 
+        FractionBox[
+         RowBox[{"2", " ", 
+           RowBox[{"EllipticK", "[", 
+             FractionBox["2", 
+              RowBox[{"1", "+", "k"}]], "]"}]}], 
+         SqrtBox[
+          RowBox[{"1", "+", "k"}]]]}], 
+      RowBox[{"k", ">", "1"}]},
+     "ConditionalExpression"],
+    HoldForm]}],
+  SequenceForm[
+   Indent[1], 
+   HoldForm[
+    ConditionalExpression[
+    2 (-1 + $CellContext`k)^Rational[-1, 2] 
+      EllipticK[(-2)/(-1 + $CellContext`k)] + 
+     2 (1 + $CellContext`k)^Rational[-1, 2] 
+      EllipticK[2/(1 + $CellContext`k)], $CellContext`k > 1]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189695100442533`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"95a35f8c-6a99-4a33-89dd-a74fa0a0c688"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"  ", "\[InvisibleSpace]", 
+   TagBox["ConditionalExpression",
+    HoldForm]}],
+  SequenceForm[
+   Indent[2], 
+   HoldForm[ConditionalExpression]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.91896951005203*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"d24c16ac-b0ad-46d9-9f80-22a60356410b"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"  ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{
+     FractionBox[
+      RowBox[{"2", " ", 
+       RowBox[{"EllipticK", "[", 
+        RowBox[{"-", 
+         FractionBox["2", 
+          RowBox[{
+           RowBox[{"-", "1"}], "+", "k"}]]}], "]"}]}], 
+      SqrtBox[
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "k"}]]], "+", 
+     FractionBox[
+      RowBox[{"2", " ", 
+       RowBox[{"EllipticK", "[", 
+        FractionBox["2", 
+         RowBox[{"1", "+", "k"}]], "]"}]}], 
+      SqrtBox[
+       RowBox[{"1", "+", "k"}]]]}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[2], 
+   HoldForm[
+   2 (-1 + $CellContext`k)^Rational[-1, 2] 
+     EllipticK[(-2)/(-1 + $CellContext`k)] + 
+    2 (1 + $CellContext`k)^Rational[-1, 2] EllipticK[2/(1 + $CellContext`k)]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189695100533133`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"11365acf-5694-4f60-b57d-1272118cbda7"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"  ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"k", ">", "1"}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[2], 
+   HoldForm[$CellContext`k > 1]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969510054679*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"214e6f94-264a-4d60-b94d-4ba40bae28fd"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"  ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"k", ">", "1"}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[2], 
+   HoldForm[$CellContext`k > 1]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.918969510056028*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"381b1ef1-fb82-4977-9d19-2ac19e28cda7"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"  ", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{
+     FractionBox[
+      RowBox[{"2", " ", 
+       RowBox[{"EllipticK", "[", 
+        RowBox[{"-", 
+         FractionBox["2", 
+          RowBox[{
+           RowBox[{"-", "1"}], "+", "k"}]]}], "]"}]}], 
+      SqrtBox[
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "k"}]]], "+", 
+     FractionBox[
+      RowBox[{"2", " ", 
+       RowBox[{"EllipticK", "[", 
+        FractionBox["2", 
+         RowBox[{"1", "+", "k"}]], "]"}]}], 
+      SqrtBox[
+       RowBox[{"1", "+", "k"}]]]}],
+    HoldForm]}],
+  SequenceForm[
+   Indent[2], 
+   HoldForm[
+   2 (-1 + $CellContext`k)^Rational[-1, 2] 
+     EllipticK[(-2)/(-1 + $CellContext`k)] + 
+    2 (1 + $CellContext`k)^Rational[-1, 2] EllipticK[2/(1 + $CellContext`k)]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9189695100574512`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"8bfa7e8b-95a2-401a-90e9-9b7224b4593d"]
+}, Open  ]],
+
+Cell[BoxData[
+ TemplateBox[{
    RowBox[{
-    FractionBox["x", "2"], ",", 
-    RowBox[{"-", "2"}]}], "]"}]}]], "Output",
- CellChangeTimes->{3.9189254282721863`*^9},
- CellLabel->"Out[9]=",ExpressionUUID->"7f6286c7-2f47-434f-9ae4-98eeba0c331b"]
+     FractionBox[
+      RowBox[{"2", " ", 
+        RowBox[{"EllipticK", "[", 
+          RowBox[{"-", 
+            FractionBox["2", 
+             RowBox[{
+               RowBox[{"-", "1"}], "+", "k"}]]}], "]"}]}], 
+      SqrtBox[
+       RowBox[{
+         RowBox[{"-", "1"}], "+", "k"}]]], "+", 
+     FractionBox[
+      RowBox[{"2", " ", 
+        RowBox[{"EllipticK", "[", 
+          FractionBox["2", 
+           RowBox[{"1", "+", "k"}]], "]"}]}], 
+      SqrtBox[
+       RowBox[{"1", "+", "k"}]]]}], 
+   RowBox[{"k", ">", "1"}]},
+  "ConditionalExpression"]], "Output",
+ CellChangeTimes->{3.918969510058949*^9},
+ CellLabel->"Out[40]=",ExpressionUUID->"73e4d992-f52b-45b8-a682-4024e15af8ba"],
+
+Cell[BoxData[
+ TemplateBox[{
+   RowBox[{
+     FractionBox[
+      RowBox[{"2", " ", 
+        RowBox[{"EllipticK", "[", 
+          RowBox[{"-", 
+            FractionBox["2", 
+             RowBox[{
+               RowBox[{"-", "1"}], "+", "k"}]]}], "]"}]}], 
+      SqrtBox[
+       RowBox[{
+         RowBox[{"-", "1"}], "+", "k"}]]], "+", 
+     FractionBox[
+      RowBox[{"2", " ", 
+        RowBox[{"EllipticK", "[", 
+          FractionBox["2", 
+           RowBox[{"1", "+", "k"}]], "]"}]}], 
+      SqrtBox[
+       RowBox[{"1", "+", "k"}]]]}], 
+   RowBox[{"k", ">", "1"}]},
+  "ConditionalExpression"]], "Output",
+ CellChangeTimes->{3.918969510061699*^9},
+ CellLabel->"Out[41]=",ExpressionUUID->"29ceecb2-63f0-4fe6-81d5-b6e2127a7870"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+   "WolframAlpha", "[", "\"\<integrate 1/Sqrt[k - Cos[x]] dx\>\"", "]"}], 
+   "\n"}]}]], "Input",
+ CellChangeTimes->{{3.9189695662932377`*^9, 3.9189695870161333`*^9}, {
+  3.9189697002521067`*^9, 
+  3.918969725670021*^9}},ExpressionUUID->"57845299-d1b7-4afa-833c-\
+37278ea20756"],
+
+Cell[BoxData[
+ NamespaceBox["WolframAlphaQueryResults",
+  DynamicModuleBox[{Typeset`q$$ = "integrate 1/Sqrt[k - Cos[x])] dx", 
+   Typeset`opts$$ = {
+   AppearanceElements -> {
+     "Warnings", "Assumptions", "Brand", "Pods", "PodMenus", "Unsuccessful", 
+      "Sources"}}, Typeset`elements$$ = {
+   "Warnings", "Assumptions", "Brand", "Pods", "PodMenus", "Unsuccessful", 
+    "Sources"}, Typeset`pod1$$ = XMLElement[
+   "pod", {"title" -> "Indefinite integral", "scanner" -> "Integral", "id" -> 
+     "IndefiniteIntegral", "position" -> "100", "error" -> "false", 
+     "numsubpods" -> "1", "primary" -> "true"}, {
+     XMLElement["subpod", {"title" -> "", "primary" -> "true"}, {
+       XMLElement["minput", {}, {"Integrate[1/Sqrt[k - Cos[x]], x]"}], 
+       XMLElement["cell", {"compressed" -> False, "string" -> True}, {
+         Cell[
+          BoxData[
+           FormBox[
+            RowBox[{
+              TagBox[
+               TagBox[
+                RowBox[{"\[Integral]", 
+                  RowBox[{
+                    TagBox[
+                    TagBox[
+                    FractionBox["1", 
+                    SqrtBox[
+                    RowBox[{"k", "-", 
+                    RowBox[{"cos", "(", "x", ")"}]}]]], Identity], 
+                    PrecedenceForm[#, 400.]& ], 
+                    RowBox[{"\[DifferentialD]", "x"}]}]}], HoldForm], 
+               PolynomialForm[#, TraditionalOrder -> False]& ], 
+              "\[LongEqual]", 
+              TagBox[
+               StyleBox[
+                RowBox[{
+                  StyleBox[
+                   FractionBox[
+                    RowBox[{"2", " ", 
+                    SqrtBox[
+                    FractionBox[
+                    RowBox[{"k", "-", 
+                    RowBox[{"cos", "(", "x", ")"}]}], 
+                    RowBox[{"k", "-", "1"}]]], " ", 
+                    TemplateBox[{
+                    FractionBox["x", "2"], 
+                    RowBox[{"-", 
+                    FractionBox["2", 
+                    RowBox[{"k", "-", "1"}]]}]}, "EllipticF"]}], 
+                    SqrtBox[
+                    RowBox[{"k", "-", 
+                    RowBox[{"cos", "(", "x", ")"}]}]]], {
+                    GrayLevel[0], LinebreakAdjustments -> {1, 100, 1, 0, 100},
+                     LineIndent -> 0}], "+", 
+                  StyleBox[
+                  "\"constant\"", {
+                   Magnification -> 0.9 Inherited, FontSize -> Inherited, 
+                    FontFamily -> "Roboto", 
+                    LinebreakAdjustments -> {1, 100, 1, 0, 100}, LineIndent -> 
+                    0}]}], {
+                 GrayLevel[0.6], LinebreakAdjustments -> {1, 100, 1, 0, 100}, 
+                 LineIndent -> 0}], Identity]}], TraditionalForm]], 
+          "Output", {
+          Background -> None, 
+           GraphicsBoxOptions -> {
+            DefaultBaseStyle -> {"Graphics", FontFamily -> "Times"}, 
+             DefaultTicksStyle -> 
+             Directive[
+              FontFamily -> "Times", FontSize -> 10, "GraphicsTicks"], 
+             DefaultFrameTicksStyle -> 
+             Directive[
+              FontFamily -> "Times", FontSize -> 10, "GraphicsFrameTicks"], 
+             DefaultFrameStyle -> Directive[
+               GrayLevel[0, 0.35], FontColor -> GrayLevel[0.25], FontOpacity -> 
+               1, "GraphicsFrame"], DefaultAxesStyle -> Directive[
+               GrayLevel[0, 0.35], FontColor -> GrayLevel[0.25], FontOpacity -> 
+               1, "GraphicsAxes"]}, 
+           Graphics3DBoxOptions -> {
+            DefaultBaseStyle -> {FontFamily -> "Times", "Graphics3D"}}}, 
+          NumberPoint -> ".", CellSize -> {550, Automatic}, 
+          AutoStyleOptions -> {"HighlightFormattingErrors" -> False}, 
+          RenderingOptions -> {
+           "3DRenderingMethod" -> "BSPTreeOrDepthBuffer"}]}], 
+       XMLElement[
+       "dataformats", {}, {
+        "plaintext,minput,moutput,computabledata,formatteddata,formuladata"}]}\
+], 
+     XMLElement["expressiontypes", {"count" -> "1"}, {"\n   ", 
+       XMLElement["expressiontype", {"name" -> "Default"}, {}], "\n  "}], 
+     XMLElement["infos", {"count" -> "1"}, {
+       XMLElement[
+       "info", {
+        "text" -> 
+         "F(x|m) is the elliptic integral of the first kind with parameter m \
+= k^2"}, {
+         XMLElement[
+         "link", {
+          "url" -> "http://reference.wolfram.com/language/ref/EllipticF.html",
+            "text" -> "Documentation", "title" -> "Mathematica"}, {}], 
+         XMLElement[
+         "link", {
+          "url" -> "http://functions.wolfram.com/EllipticIntegrals/EllipticF",
+            "text" -> "Properties", "title" -> "Wolfram Functions Site"}, {}], 
+         XMLElement[
+         "link", {
+          "url" -> 
+           "http://mathworld.wolfram.com/EllipticIntegraloftheFirstKind.html",
+            "text" -> "Definition", "title" -> "MathWorld"}, {}]}]}]}], 
+   Typeset`pod2$$ = XMLElement[
+   "pod", {"title" -> "Alternate forms assuming k and x are positive", 
+     "scanner" -> "Integral", "id" -> 
+     "AlternateFormAssumingAllVariablesAreRealAndPositive", "position" -> 
+     "200", "error" -> "false", "numsubpods" -> "2"}, {
+     XMLElement["subpod", {"title" -> ""}, {
+       XMLElement[
+       "minput", {}, {
+        "Simplify[PowerExpand[(2 Sqrt[(k - Cos[x])/(-1 + k)] EllipticF[x/2, \
+-2/(-1 + k)])/Sqrt[k - Cos[x]]]]"}], 
+       XMLElement["cell", {"compressed" -> False, "string" -> True}, {
+         Cell[
+          BoxData[
+           FormBox[
+            StyleBox[
+             RowBox[{
+               StyleBox[
+                FractionBox[
+                 RowBox[{"2", " ", 
+                   TemplateBox[{
+                    FractionBox["x", "2"], 
+                    RowBox[{"-", 
+                    FractionBox["2", 
+                    RowBox[{"k", "-", "1"}]]}]}, "EllipticF"], " ", 
+                   SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"-", "1"}], ")"}], 
+                    RowBox[{"\[LeftFloor]", 
+                    PaneBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"-", 
+                    RowBox[{"arg", "(", 
+                    RowBox[{"k", "-", 
+                    RowBox[{"cos", "(", "x", ")"}]}], ")"}]}], "+", 
+                    RowBox[{"arg", "(", 
+                    RowBox[{"k", "-", "1"}], ")"}], "+", "\[Pi]"}], ")"}], 
+                    "/", 
+                    RowBox[{"(", 
+                    RowBox[{"2", " ", "\[Pi]"}], ")"}]}], ContentPadding -> 
+                    False, FrameMargins -> {{0, 0}, {0, 0}}, BaselinePosition -> 
+                    Axis], "\[RightFloor]"}]]}], 
+                 SqrtBox[
+                  RowBox[{"k", "-", "1"}]]], {
+                 GrayLevel[0], LinebreakAdjustments -> {1, 100, 1, 0, 100}, 
+                 LineIndent -> 0}], "+", 
+               StyleBox[
+               "\"constant\"", {
+                Magnification -> 0.9 Inherited, FontSize -> Inherited, 
+                 FontFamily -> "Roboto", 
+                 LinebreakAdjustments -> {1, 100, 1, 0, 100}, LineIndent -> 
+                 0}]}], {
+              GrayLevel[0.6], LinebreakAdjustments -> {1, 100, 1, 0, 100}, 
+              LineIndent -> 0}], TraditionalForm]], "Output", {
+          Background -> None, 
+           GraphicsBoxOptions -> {
+            DefaultBaseStyle -> {"Graphics", FontFamily -> "Times"}, 
+             DefaultTicksStyle -> 
+             Directive[
+              FontFamily -> "Times", FontSize -> 10, "GraphicsTicks"], 
+             DefaultFrameTicksStyle -> 
+             Directive[
+              FontFamily -> "Times", FontSize -> 10, "GraphicsFrameTicks"], 
+             DefaultFrameStyle -> Directive[
+               GrayLevel[0, 0.35], FontColor -> GrayLevel[0.25], FontOpacity -> 
+               1, "GraphicsFrame"], DefaultAxesStyle -> Directive[
+               GrayLevel[0, 0.35], FontColor -> GrayLevel[0.25], FontOpacity -> 
+               1, "GraphicsAxes"]}, 
+           Graphics3DBoxOptions -> {
+            DefaultBaseStyle -> {FontFamily -> "Times", "Graphics3D"}}}, 
+          NumberPoint -> ".", CellSize -> {550, Automatic}, 
+          AutoStyleOptions -> {"HighlightFormattingErrors" -> False}, 
+          RenderingOptions -> {
+           "3DRenderingMethod" -> "BSPTreeOrDepthBuffer"}]}], 
+       XMLElement[
+       "dataformats", {}, {
+        "plaintext,minput,moutput,computabledata,formatteddata"}]}], 
+     XMLElement["subpod", {"title" -> ""}, {
+       XMLElement[
+       "minput", {}, {
+        "PowerExpand[(2 Sqrt[(k - Cos[x])/(-1 + k)] EllipticF[x/2, -2/(-1 + \
+k)])/Sqrt[k - Cos[x]], Assumptions -> {}]"}], 
+       XMLElement["cell", {"compressed" -> False, "string" -> True}, {
+         Cell[
+          BoxData[
+           FormBox[
+            TagBox[
+             StyleBox[
+              RowBox[{
+                StyleBox[
+                 FractionBox[
+                  RowBox[{"2", " ", 
+                    TemplateBox[{
+                    FractionBox["x", "2"], 
+                    RowBox[{"-", 
+                    FractionBox["2", 
+                    RowBox[{"k", "-", "1"}]]}]}, "EllipticF"], " ", 
+                    RowBox[{"exp", "(", 
+                    RowBox[{"\[ImaginaryI]", " ", "\[Pi]", " ", 
+                    TemplateBox[{
+                    RowBox[{
+                    FractionBox[
+                    RowBox[{"arg", "(", 
+                    RowBox[{"k", "-", "1"}], ")"}], 
+                    RowBox[{"2", " ", "\[Pi]"}]], "-", 
+                    FractionBox[
+                    RowBox[{"arg", "(", 
+                    RowBox[{"k", "-", 
+                    RowBox[{"cos", "(", "x", ")"}]}], ")"}], 
+                    RowBox[{"2", " ", "\[Pi]"}]], "+", 
+                    FractionBox["1", "2"]}]}, "Floor"]}], ")"}]}], 
+                  SqrtBox[
+                   RowBox[{"k", "-", "1"}]]], {
+                  GrayLevel[0], LinebreakAdjustments -> {1, 100, 1, 0, 100}, 
+                  LineIndent -> 0}], "+", 
+                StyleBox[
+                "\"constant\"", {
+                 Magnification -> 0.9 Inherited, FontSize -> Inherited, 
+                  FontFamily -> "Roboto", 
+                  LinebreakAdjustments -> {1, 100, 1, 0, 100}, LineIndent -> 
+                  0}]}], {
+               GrayLevel[0.6], LinebreakAdjustments -> {1, 100, 1, 0, 100}, 
+               LineIndent -> 0}], Identity], TraditionalForm]], "Output", {
+          Background -> None, 
+           GraphicsBoxOptions -> {
+            DefaultBaseStyle -> {"Graphics", FontFamily -> "Times"}, 
+             DefaultTicksStyle -> 
+             Directive[
+              FontFamily -> "Times", FontSize -> 10, "GraphicsTicks"], 
+             DefaultFrameTicksStyle -> 
+             Directive[
+              FontFamily -> "Times", FontSize -> 10, "GraphicsFrameTicks"], 
+             DefaultFrameStyle -> Directive[
+               GrayLevel[0, 0.35], FontColor -> GrayLevel[0.25], FontOpacity -> 
+               1, "GraphicsFrame"], DefaultAxesStyle -> Directive[
+               GrayLevel[0, 0.35], FontColor -> GrayLevel[0.25], FontOpacity -> 
+               1, "GraphicsAxes"]}, 
+           Graphics3DBoxOptions -> {
+            DefaultBaseStyle -> {FontFamily -> "Times", "Graphics3D"}}}, 
+          NumberPoint -> ".", CellSize -> {550, Automatic}, 
+          AutoStyleOptions -> {"HighlightFormattingErrors" -> False}, 
+          RenderingOptions -> {
+           "3DRenderingMethod" -> "BSPTreeOrDepthBuffer"}]}], 
+       XMLElement[
+       "dataformats", {}, {
+        "plaintext,minput,moutput,computabledata,formatteddata"}]}], 
+     XMLElement["expressiontypes", {"count" -> "2"}, {"\n   ", 
+       XMLElement["expressiontype", {"name" -> "Default"}, {}], "\n   ", 
+       XMLElement["expressiontype", {"name" -> "Default"}, {}], "\n  "}], 
+     XMLElement["infos", {"count" -> "2"}, {
+       XMLElement["info", {"text" -> "arg(z) is the complex argument"}, {
+         XMLElement[
+         "link", {
+          "url" -> "http://reference.wolfram.com/language/ref/Arg.html", 
+           "text" -> "Documentation", "title" -> "Mathematica"}, {}], 
+         XMLElement[
+         "link", {
+          "url" -> "http://functions.wolfram.com/ComplexComponents/Arg", 
+           "text" -> "Properties", "title" -> "Wolfram Functions Site"}, {}], 
+         
+         XMLElement[
+         "link", {
+          "url" -> "http://mathworld.wolfram.com/ComplexArgument.html", 
+           "text" -> "Definition", "title" -> "MathWorld"}, {}]}], 
+       XMLElement["info", {"text" -> "floor(x) is the floor function"}, {
+         XMLElement[
+         "link", {
+          "url" -> "http://reference.wolfram.com/language/ref/Floor.html", 
+           "text" -> "Documentation", "title" -> "Mathematica"}, {}], 
+         XMLElement[
+         "link", {
+          "url" -> "http://functions.wolfram.com/IntegerFunctions/Floor", 
+           "text" -> "Properties", "title" -> "Wolfram Functions Site"}, {}], 
+         
+         XMLElement[
+         "link", {
+          "url" -> "http://mathworld.wolfram.com/FloorFunction.html", "text" -> 
+           "Definition", "title" -> "MathWorld"}, {}]}]}]}], Typeset`pod3$$ = 
+   XMLElement[
+   "pod", {"title" -> "Alternate form of the integral", "scanner" -> 
+     "Integral", "id" -> "AlternateFormOfTheIntegral", "position" -> "300", 
+     "error" -> "false", "numsubpods" -> "1"}, {
+     XMLElement["subpod", {"title" -> ""}, {
+       XMLElement[
+       "minput", {}, {
+        "TrigToExp[(2 Sqrt[(k - Cos[x])/(-1 + k)] EllipticF[x/2, -2/(-1 + \
+k)])/Sqrt[k - Cos[x]]]"}], 
+       XMLElement["cell", {"compressed" -> False, "string" -> True}, {
+         Cell[
+          BoxData[
+           FormBox[
+            TagBox[
+             StyleBox[
+              RowBox[{
+                StyleBox[
+                 FractionBox[
+                  RowBox[{"2", " ", 
+                    SqrtBox[
+                    FractionBox[
+                    RowBox[{"k", "+", 
+                    RowBox[{
+                    FractionBox["1", "2"], " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"-", 
+                    RowBox[{
+                    SuperscriptBox["\[ExponentialE]", 
+                    RowBox[{
+                    RowBox[{"-", "\[ImaginaryI]"}], " ", "x"}]]}]}], "-", 
+                    SuperscriptBox["\[ExponentialE]", 
+                    RowBox[{"\[ImaginaryI]", " ", "x"}]]}], ")"}]}]}], 
+                    RowBox[{"k", "-", "1"}]]], " ", 
+                    TemplateBox[{
+                    FractionBox["x", "2"], 
+                    RowBox[{"-", 
+                    FractionBox["2", 
+                    RowBox[{"k", "-", "1"}]]}]}, "EllipticF"]}], 
+                  SqrtBox[
+                   RowBox[{"k", "+", 
+                    RowBox[{
+                    FractionBox["1", "2"], " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"-", 
+                    RowBox[{
+                    SuperscriptBox["\[ExponentialE]", 
+                    RowBox[{
+                    RowBox[{"-", "\[ImaginaryI]"}], " ", "x"}]]}]}], "-", 
+                    SuperscriptBox["\[ExponentialE]", 
+                    RowBox[{"\[ImaginaryI]", " ", "x"}]]}], ")"}]}]}]]], {
+                  GrayLevel[0], LinebreakAdjustments -> {1, 100, 1, 0, 100}, 
+                  LineIndent -> 0}], "+", 
+                StyleBox[
+                "\"constant\"", {
+                 Magnification -> 0.9 Inherited, FontSize -> Inherited, 
+                  FontFamily -> "Roboto", 
+                  LinebreakAdjustments -> {1, 100, 1, 0, 100}, LineIndent -> 
+                  0}]}], {
+               GrayLevel[0.6], LinebreakAdjustments -> {1, 100, 1, 0, 100}, 
+               LineIndent -> 0}], Identity], TraditionalForm]], "Output", {
+          Background -> None, 
+           GraphicsBoxOptions -> {
+            DefaultBaseStyle -> {"Graphics", FontFamily -> "Times"}, 
+             DefaultTicksStyle -> 
+             Directive[
+              FontFamily -> "Times", FontSize -> 10, "GraphicsTicks"], 
+             DefaultFrameTicksStyle -> 
+             Directive[
+              FontFamily -> "Times", FontSize -> 10, "GraphicsFrameTicks"], 
+             DefaultFrameStyle -> Directive[
+               GrayLevel[0, 0.35], FontColor -> GrayLevel[0.25], FontOpacity -> 
+               1, "GraphicsFrame"], DefaultAxesStyle -> Directive[
+               GrayLevel[0, 0.35], FontColor -> GrayLevel[0.25], FontOpacity -> 
+               1, "GraphicsAxes"]}, 
+           Graphics3DBoxOptions -> {
+            DefaultBaseStyle -> {FontFamily -> "Times", "Graphics3D"}}}, 
+          NumberPoint -> ".", CellSize -> {550, Automatic}, 
+          AutoStyleOptions -> {"HighlightFormattingErrors" -> False}, 
+          RenderingOptions -> {
+           "3DRenderingMethod" -> "BSPTreeOrDepthBuffer"}]}], 
+       XMLElement[
+       "dataformats", {}, {
+        "plaintext,minput,moutput,computabledata,formatteddata"}]}], 
+     XMLElement["expressiontypes", {"count" -> "1"}, {"\n   ", 
+       XMLElement["expressiontype", {"name" -> "Default"}, {}], "\n  "}]}], 
+   Typeset`pod4$$ = XMLElement[
+   "pod", {
+    "title" -> "Expanded cosine form", "scanner" -> "Integral", "id" -> 
+     "TrigExpandSinToCos", "position" -> "400", "error" -> "false", 
+     "numsubpods" -> "1"}, {
+     XMLElement["subpod", {"title" -> ""}, {
+       XMLElement["cell", {"compressed" -> False, "string" -> True}, {
+         Cell[
+          BoxData[
+           FormBox[
+            TagBox[
+             StyleBox[
+              RowBox[{
+                StyleBox[
+                 TagBox[
+                  FractionBox[
+                   RowBox[{"2", " ", 
+                    SqrtBox[
+                    RowBox[{
+                    FractionBox["k", 
+                    RowBox[{
+                    RowBox[{"-", "1"}], "+", "k"}]], "-", 
+                    FractionBox[
+                    RowBox[{"cos", "(", "x", ")"}], 
+                    RowBox[{
+                    RowBox[{"-", "1"}], "+", "k"}]]}]], " ", 
+                    TemplateBox[{
+                    FractionBox["x", "2"], 
+                    RowBox[{"-", 
+                    FractionBox["2", 
+                    RowBox[{
+                    RowBox[{"-", "1"}], "+", "k"}]]}]}, "EllipticF"]}], 
+                   SqrtBox[
+                    RowBox[{"k", "-", 
+                    RowBox[{"cos", "(", "x", ")"}]}]]], HoldForm], {
+                  GrayLevel[0], LinebreakAdjustments -> {1, 100, 1, 0, 100}, 
+                  LineIndent -> 0}], "+", 
+                StyleBox[
+                "\"constant\"", {
+                 Magnification -> 0.9 Inherited, FontSize -> Inherited, 
+                  FontFamily -> "Roboto", 
+                  LinebreakAdjustments -> {1, 100, 1, 0, 100}, LineIndent -> 
+                  0}]}], {
+               GrayLevel[0.6], LinebreakAdjustments -> {1, 100, 1, 0, 100}, 
+               LineIndent -> 0}], Identity], TraditionalForm]], "Output", {
+          Background -> None, 
+           GraphicsBoxOptions -> {
+            DefaultBaseStyle -> {"Graphics", FontFamily -> "Times"}, 
+             DefaultTicksStyle -> 
+             Directive[
+              FontFamily -> "Times", FontSize -> 10, "GraphicsTicks"], 
+             DefaultFrameTicksStyle -> 
+             Directive[
+              FontFamily -> "Times", FontSize -> 10, "GraphicsFrameTicks"], 
+             DefaultFrameStyle -> Directive[
+               GrayLevel[0, 0.35], FontColor -> GrayLevel[0.25], FontOpacity -> 
+               1, "GraphicsFrame"], DefaultAxesStyle -> Directive[
+               GrayLevel[0, 0.35], FontColor -> GrayLevel[0.25], FontOpacity -> 
+               1, "GraphicsAxes"]}, 
+           Graphics3DBoxOptions -> {
+            DefaultBaseStyle -> {FontFamily -> "Times", "Graphics3D"}}}, 
+          NumberPoint -> ".", CellSize -> {550, Automatic}, 
+          AutoStyleOptions -> {"HighlightFormattingErrors" -> False}, 
+          RenderingOptions -> {
+           "3DRenderingMethod" -> "BSPTreeOrDepthBuffer"}]}], 
+       XMLElement[
+       "dataformats", {}, {
+        "plaintext,moutput,computabledata,formatteddata"}]}], 
+     XMLElement["expressiontypes", {"count" -> "1"}, {"\n   ", 
+       XMLElement["expressiontype", {"name" -> "Default"}, {}], "\n  "}], 
+     XMLElement["states", {"count" -> "1"}, {
+       XMLElement[
+       "state", {
+        "name" -> "Step-by-step solution", "input" -> 
+         "TrigExpandSinToCos__Step-by-step solution", "stepbystep" -> "true", 
+         "buttonstyle" -> "StepByStepSolution"}, {}]}]}], Typeset`pod5$$ = 
+   XMLElement[
+   "pod", {"title" -> "Series expansion of the integral at x = 0", "scanner" -> 
+     "Series", "id" -> "SeriesExpansionOfTheIntegralAtx=0", "position" -> 
+     "500", "error" -> "false", "numsubpods" -> "1"}, {
+     XMLElement["subpod", {"title" -> ""}, {
+       XMLElement[
+       "minput", {}, {
+        "Series[(2 Sqrt[(k - Cos[x])/(-1 + k)] EllipticF[x/2, -2/(-1 + \
+k)])/Sqrt[k - Cos[x]], {x, 0, 4}]"}], 
+       XMLElement["cell", {"compressed" -> False, "string" -> True}, {
+         Cell[
+          BoxData[
+           FormBox[
+            TagBox[
+             GridBox[{{
+                TemplateBox[{
+                  RowBox[{
+                    FractionBox["x", 
+                    SqrtBox[
+                    RowBox[{"k", "-", "1"}]]], "-", 
+                    FractionBox[
+                    SuperscriptBox["x", "3"], 
+                    RowBox[{"12", " ", 
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"k", "-", "1"}], ")"}], 
+                    RowBox[{"3", "/", "2"}]]}]], "+", 
+                    FractionBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"2", " ", "k"}], "+", "7"}], ")"}], " ", 
+                    SuperscriptBox["x", "5"]}], 
+                    RowBox[{"480", " ", 
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"k", "-", "1"}], ")"}], 
+                    RowBox[{"5", "/", "2"}]]}]], "+", 
+                    InterpretationBox[
+                    RowBox[{"O", "(", 
+                    SuperscriptBox["x", "6"], ")"}], 
+                    SeriesData[$CellContext`x, 0, {}, 1, 6, 1], Editable -> 
+                    False]}], 
+                  RowBox[{"SeriesData", "[", 
+                    RowBox[{"x", ",", "0", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    FractionBox["1", 
+                    SqrtBox[
+                    RowBox[{
+                    RowBox[{"-", "1"}], "+", "k"}]]], ",", "0", ",", 
+                    RowBox[{"-", 
+                    FractionBox["1", 
+                    RowBox[{"12", " ", 
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"-", "1"}], "+", "k"}], ")"}], 
+                    RowBox[{"3", "/", "2"}]]}]]}], ",", "0", ",", 
+                    FractionBox[
+                    RowBox[{"7", "+", 
+                    RowBox[{"2", " ", "k"}]}], 
+                    RowBox[{"480", " ", 
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"-", "1"}], "+", "k"}], ")"}], 
+                    RowBox[{"5", "/", "2"}]]}]]}], "}"}], ",", "1", ",", "6", 
+                    ",", "1"}], "]"}]}, "SeriesData", 
+                 DisplayFunction -> (#& ), InterpretationFunction -> (#2& ), 
+                 SyntaxForm -> Plus]}, {
+                StyleBox[
+                 
+                 RowBox[{
+                  "\"(\"", "\[NoBreak]", "\"Taylor series\"", "\[NoBreak]", 
+                   "\")\""}], {FontSize -> 10, FontFamily -> "Roboto", 
+                  GrayLevel[0.5], LinebreakAdjustments -> {1, 100, 1, 0, 100},
+                   LineIndent -> 0}]}}, 
+              GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+              AllowScriptLevelChange -> False, DefaultBaseStyle -> "Column", 
+              GridBoxItemSize -> {
+               "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], 
+             "Column"], TraditionalForm]], "Output", {
+          Background -> None, 
+           GraphicsBoxOptions -> {
+            DefaultBaseStyle -> {"Graphics", FontFamily -> "Times"}, 
+             DefaultTicksStyle -> 
+             Directive[
+              FontFamily -> "Times", FontSize -> 10, "GraphicsTicks"], 
+             DefaultFrameTicksStyle -> 
+             Directive[
+              FontFamily -> "Times", FontSize -> 10, "GraphicsFrameTicks"], 
+             DefaultFrameStyle -> Directive[
+               GrayLevel[0, 0.35], FontColor -> GrayLevel[0.25], FontOpacity -> 
+               1, "GraphicsFrame"], DefaultAxesStyle -> Directive[
+               GrayLevel[0, 0.35], FontColor -> GrayLevel[0.25], FontOpacity -> 
+               1, "GraphicsAxes"]}, 
+           Graphics3DBoxOptions -> {
+            DefaultBaseStyle -> {FontFamily -> "Times", "Graphics3D"}}}, 
+          NumberPoint -> ".", CellSize -> {550, Automatic}, 
+          AutoStyleOptions -> {"HighlightFormattingErrors" -> False}, 
+          RenderingOptions -> {
+           "3DRenderingMethod" -> "BSPTreeOrDepthBuffer"}]}], 
+       XMLElement[
+       "dataformats", {}, {
+        "plaintext,minput,moutput,computabledata,formatteddata,formuladata"}]}\
+], 
+     XMLElement["expressiontypes", {"count" -> "1"}, {"\n   ", 
+       XMLElement["expressiontype", {"name" -> "Default"}, {}], "\n  "}], 
+     XMLElement["infos", {"count" -> "1"}, {
+       XMLElement["info", {}, {
+         XMLElement[
+         "link", {
+          "url" -> "http://mathworld.wolfram.com/Big-ONotation.html", "text" -> 
+           "Big\[Hyphen]O notation"}, {}]}]}]}], Typeset`aux1$$ = {
+   True, False, {False}, True}, Typeset`aux2$$ = {
+   True, False, {False, False}, True}, Typeset`aux3$$ = {
+   True, False, {False}, True}, Typeset`aux4$$ = {True, False, {False}, True},
+    Typeset`aux5$$ = {True, False, {False}, True}, Typeset`asyncpods$$ = {}, 
+   Typeset`nonpods$$ = {
+    XMLElement["warnings", {"count" -> "1"}, {
+      XMLElement[
+      "delimiters", {
+       "text" -> 
+        "An attempt was made to fix mismatched parentheses, brackets, or \
+braces."}, {}]}]}, Typeset`initdone$$ = FrontEnd`SuppressEvaluationHash[True],
+    Typeset`queryinfo$$ = {
+   "success" -> "true", "error" -> 
+    "false", {"http://www.w3.org/XML/1998/namespace", "space"} -> "preserve", 
+    "numpods" -> "5", "datatypes" -> "", "timedout" -> 
+    "Integral,Series,Plot,Plotter,Simplification,Sequence,Sum,Error", 
+    "timedoutpods" -> "", "timing" -> "3.904", "parsetiming" -> "0.589", 
+    "parsetimedout" -> "false", "recalculated" -> 
+    "https://www6b3.wolframalpha.com/api/v1/recalc.jsp?id=\
+MSPa662412fcgc7befi7di5900003d32a91e711ieb6b6235443652248981561", "id" -> 
+    "MSP662512fcgc7befi7di5900005gh2a76e0i5ac5ga", "host" -> 
+    "https://www6b3.wolframalpha.com", "server" -> "5", "related" -> 
+    "https://www6b3.wolframalpha.com/api/v1/relatedQueries.jsp?id=\
+MSPa662612fcgc7befi7di59000043ab55h0ecf60bc06235443652248981561", "version" -> 
+    "2.6", "inputstring" -> "integrate 1/Sqrt[k - Cos[x])] dx"}, 
+   Typeset`sessioninfo$$ = {
+   "TimeZone" -> 1., 
+    "Date" -> {2024, 3, 9, 11, 41, 56.093427`8.501486947711031}, "Line" -> 44,
+     "SessionID" -> 24152300276964665240}, Typeset`showpods$$ = {1, 2, 3, 4, 
+   5}, Typeset`failedpods$$ = {}, Typeset`chosen$$ = {}, Typeset`open$$ = 
+   False, Typeset`newq$$ = "integrate 1/Sqrt[k - Cos[x])] dx"}, 
+   DynamicBox[ToBoxes[
+     AlphaIntegration`FormatAlphaResults[
+      Dynamic[{
+       1, {Typeset`pod1$$, Typeset`pod2$$, Typeset`pod3$$, Typeset`pod4$$, 
+         Typeset`pod5$$}, {
+        Typeset`aux1$$, Typeset`aux2$$, Typeset`aux3$$, Typeset`aux4$$, 
+         Typeset`aux5$$}, Typeset`chosen$$, Typeset`open$$, 
+        Typeset`elements$$, Typeset`q$$, Typeset`opts$$, Typeset`nonpods$$, 
+        Typeset`queryinfo$$, Typeset`sessioninfo$$, Typeset`showpods$$, 
+        Typeset`failedpods$$, Typeset`newq$$}]], StandardForm],
+    ImageSizeCache->{811., {339.6875, 345.3125}},
+    TrackedSymbols:>{Typeset`showpods$$, Typeset`failedpods$$}],
+   DynamicModuleValues:>{},
+   Initialization:>If[
+     And[
+      Not[Typeset`initdone$$ === True], 
+      Not[Typeset`initdone$$ === FrontEnd`SuppressEvaluationHash[True]]], 
+     Null; WolframAlphaClient`Private`doAsyncUpdates[
+       Hold[{
+        Typeset`pod1$$, Typeset`pod2$$, Typeset`pod3$$, Typeset`pod4$$, 
+         Typeset`pod5$$}], Typeset`asyncpods$$, 
+       Dynamic[Typeset`failedpods$$]]; Typeset`asyncpods$$ = {}; 
+     Typeset`initdone$$ = FrontEnd`SuppressEvaluationHash[True]],
+   SynchronousInitialization->False],
+  BaseStyle->{Deployed -> True},
+  DeleteWithContents->True,
+  Editable->False,
+  SelectWithContents->True]], "Output",
+ CellChangeTimes->{3.918969605113637*^9, 3.9189697161116037`*^9},
+ CellLabel->"Out[44]=",ExpressionUUID->"338e1b65-554a-42fc-bf9c-e0df98401ff6"]
 }, Open  ]]
 },
 WindowSize->{924, 492},
-WindowMargins->{{0, Automatic}, {0, Automatic}},
+WindowMargins->{{Automatic, 0}, {0, Automatic}},
+TaggingRules->Association["TryRealOnly" -> False],
 FrontEndVersion->"12.3 for Linux x86 (64-bit) (June 19, 2021)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"000fedd2-d3de-4977-b4f5-07241ba45488"
@@ -95,13 +2119,93 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 1274, 36, 298, "Input",ExpressionUUID->"f10d78ef-53a1-43b4-bbd7-9f0e6613bc62"],
-Cell[1857, 60, 273, 7, 46, "Output",ExpressionUUID->"111f8c7f-8de2-429b-9da6-35c755144a83"],
-Cell[2133, 69, 275, 7, 95, "Output",ExpressionUUID->"7f6286c7-2f47-434f-9ae4-98eeba0c331b"]
+Cell[580, 22, 2846, 67, 484, "Input",ExpressionUUID->"f10d78ef-53a1-43b4-bbd7-9f0e6613bc62"],
+Cell[CellGroupData[{
+Cell[3451, 93, 826, 26, 23, "Print",ExpressionUUID->"ad23c910-e0ae-4861-be01-38b9f0e07ae4"],
+Cell[4280, 121, 344, 12, 23, "Print",ExpressionUUID->"faef1df4-3865-42d4-96dc-57a2751da70c"],
+Cell[4627, 135, 434, 15, 23, "Print",ExpressionUUID->"e1a71ed6-920d-469a-8117-c46b3ae4cc94"],
+Cell[5064, 152, 342, 12, 23, "Print",ExpressionUUID->"7586ec15-1def-4593-be8f-48f837ece119"],
+Cell[5409, 166, 342, 12, 23, "Print",ExpressionUUID->"d4bd496f-b2cb-4880-8f39-edbb973da6c3"],
+Cell[5754, 180, 342, 12, 23, "Print",ExpressionUUID->"be27f5dd-decb-4d3c-9557-19ad5319eadb"],
+Cell[6099, 194, 473, 16, 43, "Print",ExpressionUUID->"096de775-de10-4413-86f4-9eaa0a777f89"],
+Cell[6575, 212, 337, 12, 23, "Print",ExpressionUUID->"9f3ed122-5e21-4dc0-bb0e-178eae03c2cb"],
+Cell[6915, 226, 329, 12, 23, "Print",ExpressionUUID->"d6e383ef-1d7f-40be-8366-545360ae1d31"],
+Cell[7247, 240, 477, 16, 43, "Print",ExpressionUUID->"d25c486d-b529-4f1f-9a1c-e328fe3fbaa6"],
+Cell[7727, 258, 337, 12, 23, "Print",ExpressionUUID->"0a45ef05-5c58-4333-a846-158160e9b4c8"],
+Cell[8067, 272, 452, 16, 23, "Print",ExpressionUUID->"d8e74647-4f23-4d60-9354-f6e60d621f47"],
+Cell[8522, 290, 337, 12, 23, "Print",ExpressionUUID->"c793f4e2-baa7-428b-8f98-acc3c5774084"],
+Cell[8862, 304, 424, 14, 23, "Print",ExpressionUUID->"78a4db0b-4528-4405-94da-c099d42db8fc"],
+Cell[9289, 320, 338, 12, 23, "Print",ExpressionUUID->"baeb92c8-4d76-4bb6-80e6-71b999d3e488"],
+Cell[9630, 334, 347, 12, 23, "Print",ExpressionUUID->"181f01fc-034d-43ee-9979-d40a8dbdab58"],
+Cell[9980, 348, 404, 14, 23, "Print",ExpressionUUID->"ead586fe-fd31-4fa5-9646-27fd599006c5"],
+Cell[10387, 364, 343, 12, 23, "Print",ExpressionUUID->"c5f70165-8b82-486d-b9d8-5fb521ee7c36"],
+Cell[10733, 378, 354, 13, 23, "Print",ExpressionUUID->"9bca4e54-9f74-46e2-9f35-f64ce52dcf69"],
+Cell[11090, 393, 390, 14, 23, "Print",ExpressionUUID->"86b52542-4980-4edc-b88f-e908d7d54f30"],
+Cell[11483, 409, 340, 12, 23, "Print",ExpressionUUID->"53023fa1-5696-412e-9dc7-cd4dde56acbe"],
+Cell[11826, 423, 349, 12, 23, "Print",ExpressionUUID->"68f8b4d3-fb7c-4197-bd5b-981775f50ef3"],
+Cell[12178, 437, 458, 15, 23, "Print",ExpressionUUID->"a2558b2a-a53a-4da5-bc71-2e78ae4637b6"],
+Cell[12639, 454, 341, 12, 23, "Print",ExpressionUUID->"fb2eb91e-21f6-4d0c-a46b-24020c75f505"],
+Cell[12983, 468, 424, 14, 23, "Print",ExpressionUUID->"8b0dd21b-932d-45e4-8a58-292ad9b300d9"],
+Cell[13410, 484, 372, 14, 38, "Print",ExpressionUUID->"6a5101e8-3a5b-4c9c-b640-97b99ce33ec3"],
+Cell[13785, 500, 374, 14, 38, "Print",ExpressionUUID->"0feec2fd-4881-46f0-83c9-1257dc68903a"],
+Cell[14162, 516, 351, 13, 23, "Print",ExpressionUUID->"67a82e1a-04df-4fd6-941d-9e9e9091b4be"],
+Cell[14516, 531, 488, 16, 43, "Print",ExpressionUUID->"962bec48-ad2e-4e30-a5f2-a5aab5c52552"],
+Cell[15007, 549, 482, 16, 43, "Print",ExpressionUUID->"1bc30255-bb05-4948-b4f7-cea51767d304"],
+Cell[15492, 567, 337, 12, 23, "Print",ExpressionUUID->"7ca05b64-96a5-4132-99e8-6de4a63ecadf"],
+Cell[15832, 581, 423, 14, 23, "Print",ExpressionUUID->"bbe8e723-1eba-4a10-a70d-f9d4f6c7024c"],
+Cell[16258, 597, 393, 15, 38, "Print",ExpressionUUID->"01a539ab-7c17-4da0-a3d0-294ffb2a6a7b"],
+Cell[16654, 614, 395, 15, 38, "Print",ExpressionUUID->"8b2719a5-ffe4-4ce3-8e56-f393f9f1dbe8"],
+Cell[17052, 631, 485, 16, 43, "Print",ExpressionUUID->"66dad2b8-8d68-4f96-b390-cc4e6b11ba6d"],
+Cell[17540, 649, 480, 16, 43, "Print",ExpressionUUID->"b0274419-5dcc-4a0a-93a4-df89ce3dc789"],
+Cell[18023, 667, 444, 15, 23, "Print",ExpressionUUID->"a3595041-61b3-47c9-89d0-de3eecf61f84"],
+Cell[18470, 684, 337, 12, 23, "Print",ExpressionUUID->"a0a04793-2b60-4894-85cd-da60fe21a75b"],
+Cell[18810, 698, 344, 12, 23, "Print",ExpressionUUID->"db3d9a33-a0eb-4b4a-8116-9a1bab8f50b6"],
+Cell[19157, 712, 329, 12, 23, "Print",ExpressionUUID->"7e0bab72-f9f6-474f-95f2-2974779dc0bc"],
+Cell[19489, 726, 361, 13, 23, "Print",ExpressionUUID->"1df63fb7-fd39-4a46-830c-b547a7a5103e"],
+Cell[19853, 741, 338, 12, 23, "Print",ExpressionUUID->"94aa20ec-ddc5-42a2-a894-3f623a9bcdba"],
+Cell[20194, 755, 330, 12, 23, "Print",ExpressionUUID->"12c31cd8-b55e-4269-8c20-fc743070ad98"],
+Cell[20527, 769, 334, 12, 23, "Print",ExpressionUUID->"baef13a0-3f60-48a1-8e6d-6d5a2827ea44"],
+Cell[20864, 783, 485, 16, 23, "Print",ExpressionUUID->"2d7b6471-f3db-4b21-ad20-76aba066df58"],
+Cell[21352, 801, 335, 12, 23, "Print",ExpressionUUID->"525765c2-f5df-4fe0-93de-f8ba2609a051"],
+Cell[21690, 815, 349, 12, 23, "Print",ExpressionUUID->"713adeab-a273-4458-998f-393ce492b98f"],
+Cell[22042, 829, 430, 16, 23, "Print",ExpressionUUID->"82245072-c2fc-43ca-bd19-9bab00e5a990"],
+Cell[22475, 847, 344, 12, 23, "Print",ExpressionUUID->"8fae5d7d-342b-4298-a1ff-9aa80ae52c58"],
+Cell[22822, 861, 343, 12, 23, "Print",ExpressionUUID->"bba08d85-30d3-4cb0-bd15-186632b33044"],
+Cell[23168, 875, 367, 14, 23, "Print",ExpressionUUID->"9af445fa-ecbb-4d6f-91b4-bf9854c59716"],
+Cell[23538, 891, 483, 16, 23, "Print",ExpressionUUID->"131cab28-e7d2-4bca-9319-e30121be5dd9"],
+Cell[24024, 909, 335, 12, 23, "Print",ExpressionUUID->"7303b826-60f8-4a6d-a191-3d4049bf383e"],
+Cell[24362, 923, 349, 12, 23, "Print",ExpressionUUID->"2f8f63fb-732b-4ee5-8cf3-028214e8146f"],
+Cell[24714, 937, 430, 16, 23, "Print",ExpressionUUID->"5e917997-eca7-49c5-a123-f034f907f480"],
+Cell[25147, 955, 881, 28, 43, "Print",ExpressionUUID->"0e9c39c5-54ab-4999-8a6b-3cd07a61f61c"],
+Cell[26031, 985, 539, 18, 23, "Print",ExpressionUUID->"571e5a72-cd8b-4c37-948b-6e08c5de842f"],
+Cell[26573, 1005, 343, 12, 23, "Print",ExpressionUUID->"1217ada8-3ba7-4e04-8ebf-5d68a34a6b8f"],
+Cell[26919, 1019, 484, 16, 23, "Print",ExpressionUUID->"60d3753a-3065-407e-a661-f40157c072e5"],
+Cell[27406, 1037, 336, 12, 23, "Print",ExpressionUUID->"bfd5fcab-207f-4213-b6ea-df0c5f947a4c"],
+Cell[27745, 1051, 1109, 35, 70, "Print",ExpressionUUID->"96d6300f-8a9f-4bd6-979c-c09048eb6969"],
+Cell[28857, 1088, 333, 12, 23, "Print",ExpressionUUID->"f12051a4-37df-45b4-9e41-77bb233eeee6"],
+Cell[29193, 1102, 1061, 33, 70, "Print",ExpressionUUID->"53e99e98-6f74-4855-a4a0-220aee0dfe80"],
+Cell[30257, 1137, 338, 12, 23, "Print",ExpressionUUID->"150e17c1-bf69-471c-ac9f-829e9c01e4b7"],
+Cell[30598, 1151, 483, 16, 43, "Print",ExpressionUUID->"b4c82272-0fe6-4cfc-8967-374be49a5995"],
+Cell[31084, 1169, 797, 26, 23, "Print",ExpressionUUID->"b5488b07-b36a-46e9-a930-fd8eb424a952"],
+Cell[31884, 1197, 351, 12, 23, "Print",ExpressionUUID->"16c84856-4acf-414a-9035-bd56bee7dd78"],
+Cell[32238, 1211, 337, 12, 23, "Print",ExpressionUUID->"498b4b21-2bfe-4d46-ab50-a1aa0f774a1b"],
+Cell[32578, 1225, 364, 14, 23, "Print",ExpressionUUID->"8e2f6de9-6efe-4e58-84c6-bd38bbd3886d"],
+Cell[32945, 1241, 336, 12, 23, "Print",ExpressionUUID->"2ecf78f2-9cdc-4636-a2c1-4306bfa3932e"],
+Cell[33284, 1255, 1195, 38, 62, "Print",ExpressionUUID->"95a35f8c-6a99-4a33-89dd-a74fa0a0c688"],
+Cell[34482, 1295, 367, 12, 23, "Print",ExpressionUUID->"d24c16ac-b0ad-46d9-9f80-22a60356410b"],
+Cell[34852, 1309, 984, 33, 51, "Print",ExpressionUUID->"11365acf-5694-4f60-b57d-1272118cbda7"],
+Cell[35839, 1344, 370, 13, 23, "Print",ExpressionUUID->"214e6f94-264a-4d60-b94d-4ba40bae28fd"],
+Cell[36212, 1359, 370, 13, 23, "Print",ExpressionUUID->"381b1ef1-fb82-4977-9d19-2ac19e28cda7"],
+Cell[36585, 1374, 984, 33, 51, "Print",ExpressionUUID->"8bfa7e8b-95a2-401a-90e9-9b7224b4593d"]
+}, Open  ]],
+Cell[37584, 1410, 728, 23, 69, "Output",ExpressionUUID->"73e4d992-f52b-45b8-a682-4024e15af8ba"],
+Cell[38315, 1435, 728, 23, 69, "Output",ExpressionUUID->"29ceecb2-63f0-4fe6-81d5-b6e2127a7870"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[39080, 1463, 348, 9, 71, "Input",ExpressionUUID->"57845299-d1b7-4afa-833c-37278ea20756"],
+Cell[39431, 1474, 29119, 625, 704, "Output",ExpressionUUID->"338e1b65-554a-42fc-bf9c-e0df98401ff6"]
 }, Open  ]]
 }
 ]
 *)
-
-(* End of internal cache information *)
 

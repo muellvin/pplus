@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 #no radius because cancels with r' from r'dphi' 
 q = 1
 qdens1 = q/(2*np.pi)
-qdens2 = 0#-q/(2*np.pi)
+qdens2 = -q/(2*np.pi)
 
 #constants
 epsilon = 8.854e-12 #farads per meter
@@ -142,18 +142,36 @@ def capacitance(R1, R2, d=0):
 
 
 #radii of the two rings with R1<R2
-R1 = 10e-3#m
-s = 10e-3#m
+R1 = 20e-3#m
+s = 8e-3#m
 R2 = R1+s#m
 
 #distance of the conducting plane
 #choose d=0 for no conductor
-d= 13e-3#m
+d= 10e-3#m
 
 plotfield(R1, R2, d)
-print('capacitance: ', capacitance(R1, R2, d),'farads')
+print('capacitance open: ', capacitance(R1, R2)*1e12,'pF')
 
 
+d = np.array([10,5,3,2,1,0.5])*1e-3
+c = np.zeros_like(d, dtype=float)
+for i, di in enumerate(d):
+    c[i] = capacitance(R1, R2, di)
+
+concat_dc = np.concatenate((d, c))
+
+
+np.savetxt('numerical_values.txt', concat_dc)
+
+plt.figure()
+plt.plot(d*1e3,c*1e12)
+
+"""
+
+for plotting nice graph:
+    
+    
 d = np.arange(1e-3,40e-3, 1e-3)
 c = np.zeros_like(d, dtype=float)
 for i, di in enumerate(d):
@@ -168,3 +186,4 @@ plt.savefig('fig.pdf')  # Save the figure as a png
 plt.show()
 plt.close()
 
+"""
