@@ -13,13 +13,11 @@ import matplotlib.pyplot as plt
 #charge and charge density
 #no radius because cancels with r' from r'dphi' 
 q = 1
-qdens1 = q/(2*np.pi)
-qdens2 = -q/(2*np.pi)
 
 #constants
 epsilon = 8.854e-12 #farads per meter
-constant1 = qdens1/(4*np.pi*epsilon)
-constant2 = qdens2/(4*np.pi*epsilon)
+constant1 = q/(8*np.pi**2*epsilon)
+constant2 = -q/(8*np.pi**2*epsilon)
 
 
 
@@ -66,7 +64,7 @@ def integrandEr(R, r, z, x):
 
 #only for sanity check, should be zero
 def integrandEy(R, r, z, x):
-    numerator = R*np.sin(x)
+    numerator = -R*np.sin(x)
     d = np.sqrt(r**2 + R**2 + z**2 - 2*r*R*np.cos(x))
     denominator = d**(3)
     return numerator/denominator
@@ -142,8 +140,8 @@ def capacitance(R1, R2, d=0):
 
 
 #radii of the two rings with R1<R2
-R1 = 20e-3#m
-s = 8e-3#m
+R1 = 10e-3#m
+s = 5e-3#m
 R2 = R1+s#m
 
 #distance of the conducting plane
