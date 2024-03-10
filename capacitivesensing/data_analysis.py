@@ -110,11 +110,15 @@ print('corrected measured capacitance, D open, 100kOhm: {}'.format(D_C_open))
 D_d = D[:,0]
 D_C = 1/(2*0.69*100e3*D[:,1]*1e3)*1e12 - capacitance_correction
 
+
+#values from numerical model
+dvalues = np.array([0.5,1,2,3,5,10])
+A_Cvalues = np.array([2.27171433e-11, 1.15853243e-11, 6.04218563e-12, 4.20209436e-12,
+ 2.74841705e-12, 1.72695894e-12])*1e12
+
 fig = plt.figure()
 plt.plot(A_d, A_C)
-plt.plot(B_d, B_C)
-plt.plot(C_d, C_C)
-plt.plot(D_d, D_C)
+plt.plot(dvalues,A_Cvalues)
 
 """
 dist = B_C
