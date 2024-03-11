@@ -61,8 +61,10 @@ A_open = np.array([1000, 363.7, 317.6, 107])
 A_C_open = 1/(2*0.69*100e3*A_open[1]*1e3)*1e12 - capacitance_correction
 print('corrected measured capacitance, A open, 100kOhm: {}'.format(A_C_open))
 
-A_d = A[:,0]
-A_C = 1/(2*0.69*100e3*A[:,1]*1e3)*1e12 - capacitance_correction
+
+
+
+
 
 B = np.array([
 [10.0,400.7, 0, 103],
@@ -104,25 +106,49 @@ D = np.array([
 [0.5, 422.6, 283.1, 98]])
 D_open = np.array([1000, 459.9, 232.8, 105])
 D_C_open = 1/(2*0.69*100e3*D_open[1]*1e3)*1e12 - capacitance_correction
-print('corrected measured capacitance, D open, 100kOhm: {}'.format(D_C_open))
-
-
-D_d = D[:,0]
-D_C = 1/(2*0.69*100e3*D[:,1]*1e3)*1e12 - capacitance_correction
+#print('corrected measured capacitance, D open, 100kOhm: {}'.format(D_C_open))
 
 
 #values from numerical model
 dvalues = np.array([0.5,1,2,3,5,10])
-A_Cvalues = np.array([2.27171433e-11, 1.15853243e-11, 6.04218563e-12, 4.20209436e-12,
- 2.74841705e-12, 1.72695894e-12])*1e12
 
-fig = plt.figure()
-plt.plot(A_d, A_C)
-plt.plot(dvalues,A_Cvalues)
+measurements = np.empty((4,6),dtype = float)
 
-"""
-dist = B_C
-dist = dist[::-1]
-print(np.array2string(dist, precision=2, separator=', '))
-"""
-print(D_C_open)
+A_measurement = 1/(2*0.69*100e3*A[:,1]*1e3)*1e12
+measurements[0,:] = A_measurement[::-1]
+B_measurement = 1/(2*0.69*100e3*B[:,1]*1e3)*1e12
+measurements[1,:] = B_measurement[::-1]
+C_measurement = 1/(2*0.69*100e3*C[:,1]*1e3)*1e12
+measurements[2,:] = C_measurement[::-1]
+D_measurement = 1/(2*0.69*100e3*D[:,1]*1e3)*1e12
+measurements[3,:] = D_measurement[::-1]
+
+measurements_corrected = measurements - capacitance_correction
+
+
+numerical_values = np.array(
+[[14.38175938,  7.3790932 ,  3.89097648,  2.73434873,  1.82487475,  1.19969803],
+ [ 6.72982207,  3.49865729,  1.88985146,  1.35818809,  0.94472547,  0.67453665],
+ [ 1.91964577,  1.03296774,  0.59384739,  0.4508662 ,  0.34379097,  0.28322917],
+ [ 0.5955314,   0.33856777,  0.2135263,   0.17431424,  0.14695552,  0.13464536]
+ ]
+)
+
+sensors = np.array(['A', 'B', 'C', 'D'])
+deviation = measurements_corrected-numerical_values
+
+fig, axes = plt.subplots(4, 1, figsize=(5, 10))
+
+for i, ax in enumerate(axes):
+    ax.plot(dvalues, measurements_corrected[i,:], label='corrected measurement')
+    ax.plot(dvalues, numerical_values[i,:], label='numerical values')
+    ax.plot(dvalues, deviation[i,:], label='difference')
+    ax.set_title('Sensor {}'.format(sensors[i]))
+    ax.set_xlabel('distance [mm]')
+    ax.set_ylabel('Capacitance [pF]')
+    if i == 0:
+        ax.legend()
+
+fig.suptitle('Capacitance measured and modelled')
+fig.tight_layout()
+fig.savefig('measurements.pdf')

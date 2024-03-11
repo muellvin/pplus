@@ -36,7 +36,7 @@ def set_params(R1value, svalue, dvalue):
     R1 = R1value
     s = svalue
     d = dvalue
-    Rout = 3*R1 
+    Rout = max(3*R1, 0.02)
 
     #spacing of the finite elements
     Nr = 100
@@ -214,35 +214,38 @@ def drawEfield():
     plt.xlabel('X')
     plt.ylabel('Y')
     plt.title('Vector Field')
+    plt.gca().set_aspect('equal')  # Set aspect ratio to 'auto'
+
     plt.show()
 
 def computation(R1value, svalue, dvalue):
     set_params(R1value, svalue, dvalue)
     voltage_matrix()
-    #printvoltage()
+    printvoltage()
     c = capacitance()
-    #drawEfield()
+    drawEfield()
     return c
 
 
 
-
-
-dvalues = np.array([0.5,1,2,3,5,10])*1e-3
-
 mil = 0.0254e-3
 
-R1values = np.array([125,225,425,625])*mil
+
+
+
+R1values = np.array([625, 425, 225, 125])*mil
 s = 195*mil
+dvalues = np.array([0.5,1,2,3,5,10])*1e-3
 
-A_C = np.empty(len(dvalues), dtype=float)
+numerical_values = np.empty((4,len(dvalues)), dtype=float)
 
-for i, dvalue in enumerate(dvalues):
-    A_C[i] = computation(20e-3, s, dvalue)
+for i, rvalue in enumerate(R1values):
+    for j, dvalue in enumerate(dvalues):
+        numerical_values[i,j] = computation(rvalue, s, dvalue)*1e12
 
-print(A_C)
+#C = computation(625*mil*1e-3, s, 30e-3)
 
-
+print(numerical_values)
 
 """
 # Create the heatmap
