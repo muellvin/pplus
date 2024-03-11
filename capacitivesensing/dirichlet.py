@@ -9,6 +9,7 @@ Created on Sun Mar 10 13:01:22 2024
 import numpy as np
 import math
 import matplotlib.pyplot as plt
+from tqdm import tqdm
 
 
 
@@ -36,7 +37,7 @@ def set_params(R1value, svalue, dvalue):
     R1 = R1value
     s = svalue
     d = dvalue
-    Rout = max(3*R1, 0.015)
+    Rout = max(3*R1 + s, 0.015)
 
     #spacing of the finite elements
     Nr = 100
@@ -197,7 +198,7 @@ def capacitance():
     """capacitance"""
     #W = 1/2 * C *V**2
     C = 2*W/voltage_sensor**2
-    print('capacitance: {:.2f} pF'.format(C*1e12))
+    #print('capacitance: {:.2f} pF'.format(C*1e12))
     return C
 
 def drawEfield():
@@ -221,9 +222,9 @@ def drawEfield():
 def computation(R1value, svalue, dvalue):
     set_params(R1value, svalue, dvalue)
     voltage_matrix()
-    printvoltage()
+    #printvoltage()
     c = capacitance()
-    drawEfield()
+    #drawEfield()
     return c
 
 
@@ -232,7 +233,23 @@ mil = 0.0254e-3
 
 
 
+R1values = np.array([50])*mil
+dvalues = np.array([0.5, 1, 2, 3, 5, 10])*1e-3
+svalues = np.array([10, 30, 50, 100, 200, 400])*mil
 
+numerical_values = np.empty((len(R1values),len(dvalues),len(svalues)), dtype=float)
+
+for i, rvalue in enumerate(R1values):
+    for j, dvalue in enumerate(dvalues):
+        for k, svalue in enumerate(svalues):
+            numerical_values[i,j,k] = computation(rvalue, svalue, dvalue)*1e12
+            print('R1: {:.2f} mm, s: {:.2f} mm, d: {:.2f} mm, C: {:.2f} pF'.format(rvalue*1e3, svalue*1e3, dvalue*1e3, numerical_values[i,j,k]))
+
+# save the numerical values
+np.save('numerical_values_r_d_s.npy', numerical_values)
+print(numerical_values)
+
+"""
 R1values = np.array([625, 425, 225, 125])*mil
 s = 195*mil
 dvalues = np.array([0.5,1,2,3,5,10])*1e-3
@@ -246,7 +263,7 @@ numerical_values = np.empty((4,len(dvalues)), dtype=float)
 C = computation(125*mil, s, 10e-3)
 
 print(numerical_values)
-
+"""
 """
 # Create the heatmap
 plt.pcolormesh(r, z, np.transpose(Er), cmap='hot')
