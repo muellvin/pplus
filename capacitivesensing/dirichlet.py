@@ -36,7 +36,7 @@ def set_params(R1value, svalue, dvalue):
     R1 = R1value
     s = svalue
     d = dvalue
-    Rout = max(3*R1, 0.02)
+    Rout = max(3*R1, 0.015)
 
     #spacing of the finite elements
     Nr = 100
@@ -165,11 +165,11 @@ def printvoltage():
     # Create the heatmap
     plt.pcolormesh(r, z, np.transpose(voltage), cmap='hot')
     plt.colorbar()  # Add a color bar indicating the scale
-    plt.xlabel('r Coordinate')
-    plt.ylabel('z Coordinate')
+    plt.xlabel('r [m]')
+    plt.ylabel('z [m]')
     plt.title('Heatmap of Voltage')
     plt.gca().set_aspect('equal')  # Set aspect ratio to 'auto'
-    
+    plt.savefig('heatmap.pdf')
     plt.show()
 
 
@@ -211,11 +211,11 @@ def drawEfield():
     # Plot the vector field
     plt.figure()
     plt.quiver(rr[::10,::10], zz[::10,::10], np.transpose(Er_normed[::10,::10]), np.transpose(Ez_normed[::10,::10]))
-    plt.xlabel('X')
-    plt.ylabel('Y')
-    plt.title('Vector Field')
+    plt.xlabel('r [m]')
+    plt.ylabel('z [m]')
+    plt.title('Direction of the electric field')
     plt.gca().set_aspect('equal')  # Set aspect ratio to 'auto'
-
+    plt.savefig('efield.pdf')
     plt.show()
 
 def computation(R1value, svalue, dvalue):
@@ -239,11 +239,11 @@ dvalues = np.array([0.5,1,2,3,5,10])*1e-3
 
 numerical_values = np.empty((4,len(dvalues)), dtype=float)
 
-for i, rvalue in enumerate(R1values):
-    for j, dvalue in enumerate(dvalues):
-        numerical_values[i,j] = computation(rvalue, s, dvalue)*1e12
+#for i, rvalue in enumerate(R1values):
+#    for j, dvalue in enumerate(dvalues):
+#        numerical_values[i,j] = computation(rvalue, s, dvalue)*1e12
 
-#C = computation(625*mil*1e-3, s, 30e-3)
+C = computation(125*mil, s, 10e-3)
 
 print(numerical_values)
 

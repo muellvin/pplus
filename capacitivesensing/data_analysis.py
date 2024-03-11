@@ -149,6 +149,6 @@ for i, ax in enumerate(axes):
     if i == 0:
         ax.legend()
 
-fig.suptitle('Capacitance measured and modelled')
+fig.suptitle('Capacitance vs. distance of conducting plate')
 fig.tight_layout()
 fig.savefig('measurements.pdf')
