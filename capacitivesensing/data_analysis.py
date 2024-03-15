@@ -137,6 +137,9 @@ numerical_values = np.array(
 sensors = np.array(['A', 'B', 'C', 'D'])
 deviation = measurements_corrected-numerical_values
 
+custom_ticks_x = [0.5, 1, 2, 3, 5, 10]
+
+
 fig, axes = plt.subplots(4, 1, figsize=(5, 10))
 
 for i, ax in enumerate(axes):
@@ -146,6 +149,7 @@ for i, ax in enumerate(axes):
     ax.set_title('Sensor {}'.format(sensors[i]))
     ax.set_xlabel('distance [mm]')
     ax.set_ylabel('Capacitance [pF]')
+    ax.set_xticks(custom_ticks_x)
     if i == 0:
         ax.legend()
 

@@ -164,13 +164,13 @@ def voltage_matrix():
 def printvoltage():
 
     # Create the heatmap
-    plt.pcolormesh(r, z, np.transpose(voltage), cmap='hot')
-    plt.colorbar()  # Add a color bar indicating the scale
+    plt.pcolormesh(r, z, np.transpose(voltage), cmap='hot', label='normed Voltage')
+    plt.colorbar().set_label('Voltage (normalized)')  # Add a color bar indicating the scale
     plt.xlabel('r [m]')
     plt.ylabel('z [m]')
-    plt.title('Heatmap of Voltage')
+    plt.title('Heatmap of normed potential')
     plt.gca().set_aspect('equal')  # Set aspect ratio to 'auto'
-    plt.savefig('heatmap.pdf')
+    plt.savefig('heatmap.png', dpi=300)
     plt.show()
 
 
